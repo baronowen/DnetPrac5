@@ -18,6 +18,11 @@ namespace ShopServerLibrary
         [OperationContract]
         List<Product> GetAllProducts();
 
+        [OperationContract]
+        string LowerProductAmount(Product p, int amount);
+
+
+
         // Methods related to users.
         [OperationContract]
         string Login(string username, string password);
@@ -26,7 +31,7 @@ namespace ShopServerLibrary
         string Register(string username);
 
         [OperationContract]
-        string GetSaldo(int id);
+        string GetBalance(int id);
 
         //[OperationContract]
         //string GetUserProductsJSON(int id);

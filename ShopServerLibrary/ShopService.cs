@@ -23,6 +23,26 @@ namespace ShopServerLibrary
             return p.GenerateProducts();
         }
 
+        public string LowerProductAmount(Product p, int amount)
+        {
+            if(p.Amount == 0)
+            {
+                return "Product " + p.Name + " is no longer available";
+            }
+            else if(amount > p.Amount)
+            {
+                return "You are trying to buy more than there is available of product " 
+                    + p.Name + ", please lower the amount you want to buy.";
+            }
+            else if(amount <= p.Amount)
+            {
+                p.Amount = p.Amount - amount;
+                return "You have successfully bought " + amount + " " + p.Name + ".";
+            }
+
+            return "something";
+        }
+
         // Methods related to users.
         public string Register(string username)
         {
@@ -37,7 +57,7 @@ namespace ShopServerLibrary
                 : "Username and password combination is wrong!";
         }
 
-        public string GetSaldo(int id)
+        public string GetBalance(int id)
         {
             //hard coded stuff that needs to be changed when persistence has been done
             return "20";
