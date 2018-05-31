@@ -18,7 +18,7 @@ namespace quickTestApp
             Product p = new Product();
             Console.WriteLine(p.GenerateProducts());
 
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("--------------------------------");            
         }
     }
 }
