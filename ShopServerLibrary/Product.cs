@@ -17,13 +17,15 @@ namespace ShopServerLibrary
 
         public int Amount { get; set; }
 
-        List<Product> Products = new List<Product>();
+        List<Product> products = new List<Product>();
+        
 
-
-        public string GenerateProducts()
+        //Hardcoded product list:
+        //Will later be replaced by database.
+        public List<Product> GenerateProducts()
         {
 
-            this.Products.Add(
+            this.products.Add(
                 new Product
                 {
                     Name = "Carrot",
@@ -31,7 +33,7 @@ namespace ShopServerLibrary
                     Price = 2.50,
                     Id = 1
                 });
-            this.Products.Add(
+            this.products.Add(
                 new Product
                 {
                     Name = "Apple",
@@ -39,7 +41,7 @@ namespace ShopServerLibrary
                     Price = 1,
                     Id = 2
                 });
-            this.Products.Add(
+            this.products.Add(
                 new Product
                 {
                     Name = "Lettuce",
@@ -48,8 +50,12 @@ namespace ShopServerLibrary
                     Id = 3
                 });
 
-            var json = JsonConvert.SerializeObject(this.Products);
-            return json;
+            //var json = JsonConvert.SerializeObject(this.products);
+            foreach(Product p in products)
+            {
+                Console.WriteLine("{0} voor {1}", p.Name, p.Price);
+            }
+            return products;
         }
     }
 }

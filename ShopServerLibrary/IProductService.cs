@@ -15,6 +15,6 @@ namespace ShopServerLibrary
         string GetAllProducts();
 
         [OperationContract]
-        string GetProductById();
+        string GetProductById(int id);
     }
 }

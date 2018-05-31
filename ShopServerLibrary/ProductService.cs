@@ -10,14 +10,17 @@ namespace ShopServerLibrary
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ProductService" in both code and config file together.
     public class ProductService : IProductService
     {
+        Product p = new Product();
+
         public string GetAllProducts()
         {
-            Product p = new Product();
-            return p.GenerateProducts();
+            return p.GenerateProducts().ToString();
         }
 
-        public string GetProductById()
+        public string GetProductById(int id)
         {
+
+
             return "1 product";
         }
     }

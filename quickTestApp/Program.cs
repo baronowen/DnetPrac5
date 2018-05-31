@@ -17,6 +17,11 @@ namespace quickTestApp
 
             Product p = new Product();
             Console.WriteLine(p.GenerateProducts());
+            //var pr = p.GenerateProducts();
+            //foreach(Product product in pr)
+            //{
+            //    Console.WriteLine(product.Name);
+            //}
 
             Console.WriteLine("--------------------------------");            
         }
