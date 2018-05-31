@@ -25,11 +25,11 @@ namespace WPFGUI
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            MainFrame.Content = new LoginPage();
+            MainFrame.Content = new RegisterPage();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-            MainFrame.Content = new RegisterPage();
+            MainFrame.Content = new LoginPage();
         }
     }
 }

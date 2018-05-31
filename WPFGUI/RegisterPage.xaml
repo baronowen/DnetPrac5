@@ -8,8 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">
 
-    <Grid Background="#FF218F9B">
-        <Label Content="Label" HorizontalAlignment="Left" Margin="334,172,0,0" VerticalAlignment="Top"/>
-
+    <Grid Background="#FF93D4C0">
+        <Button x:Name="LoginButton" Content="Register" HorizontalAlignment="Left" Margin="349,178,0,0" VerticalAlignment="Top" Width="75" Click="Register_Click"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="229,122,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UserText" HorizontalAlignment="Left" Height="23" Margin="304,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="PasswordText" Content="" HorizontalAlignment="Left" Margin="229,148,0,0" VerticalAlignment="Top" Width="195"/>
+        <TextBlock HorizontalAlignment="Left" Margin="229,85,0,0" TextWrapping="Wrap" Text="Make yourself an username to get your password" VerticalAlignment="Top" Width="195" Height="32"/>
     </Grid>
 </Page>

@@ -58,7 +58,7 @@ namespace ShopServerLibrary
                 : "Username and password combination is wrong!";
         }
 
-        public List<Product> getBoughtProducts(int id) {
+        public List<Product> GetBoughtProducts(int id) {
             User user = new User();
             return user.BoughtProducts;
         }

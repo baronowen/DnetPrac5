@@ -23,5 +23,9 @@ namespace WPFGUI
         public RegisterPage() {
             InitializeComponent();
         }
+
+        private void Register_Click(object sender, RoutedEventArgs e) {
+            PasswordText.Content = "register button clicked";
+        }
     }
 }

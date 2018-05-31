@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace WPFGUI
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for ProductsPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class ProductsPage : Page
     {
-        public LoginPage() {
+        public ProductsPage()
+        {
             InitializeComponent();
-        }
-
-        private void Login_Click(object sender, RoutedEventArgs e) {
-            this.NavigationService.Navigate(new ProductsPage());
         }
     }
 }
