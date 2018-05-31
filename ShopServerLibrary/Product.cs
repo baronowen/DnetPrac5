@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+
 
 namespace ShopServerLibrary
 {
@@ -18,32 +18,28 @@ namespace ShopServerLibrary
         public int Amount { get; set; }
 
         List<Product> products;
-        
+
 
         //Hardcoded product list:
         //Will later be replaced by database.
-        public List<Product> GenerateProducts()
-        {
+        public List<Product> GenerateProducts() {
             products = new List<Product>();
             this.products.Add(
-                new Product
-                {
+                new Product {
                     Name = "Carrot",
                     Amount = 20,
                     Price = 2.50,
                     Id = 1
                 });
             this.products.Add(
-                new Product
-                {
+                new Product {
                     Name = "Apple",
                     Amount = 30,
                     Price = 1,
                     Id = 2
                 });
             this.products.Add(
-                new Product
-                {
+                new Product {
                     Name = "Lettuce",
                     Amount = 50,
                     Price = 3,
@@ -58,8 +54,7 @@ namespace ShopServerLibrary
             return products;
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return "Product: " + Id + " " + Name + " " + Price + " " + Amount;
         }
     }
