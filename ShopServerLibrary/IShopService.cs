@@ -33,5 +33,6 @@ namespace ShopServerLibrary
 
         //[OperationContract]
         //string GetUserProductsJSON(int id);
+        //TODO this one needs fixing.
     }
 }

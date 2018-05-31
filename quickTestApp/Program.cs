@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShopServerLibrary;
+
 namespace quickTestApp
 {
     class Program
@@ -12,6 +13,7 @@ namespace quickTestApp
 
             User user = new User();
             Console.WriteLine(user.generateJsonFromProducts());
+            //TODO above function needs to be fixed.
 
             Console.WriteLine("\n--------------------------------\n");
 

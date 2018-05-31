@@ -54,6 +54,7 @@ namespace ShopServerLibrary
         public string Register(string username)
         {
             return "nope";
+            //TODO password generation needs to be added.
         }
 
         public string Login(string username, string password)
@@ -70,5 +71,6 @@ namespace ShopServerLibrary
         //    User user = new User();
         //    return user.generateJsonFromProducts();
         //}
+        //TODO this one too wants to be fixed.
     }
 }
