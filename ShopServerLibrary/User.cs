@@ -8,11 +8,11 @@ namespace ShopServerLibrary
 {
     class User
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public double saldo { get; set; }
-        public List<Product> products { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public double Saldo { get; set; }
+        public List<Product> Products { get; set; }
 
 
 
@@ -20,10 +20,27 @@ namespace ShopServerLibrary
             //hard coded products
 
             this.products.Add(
-                new Product { Name = "wortel",
-                    amount = 12,
+                new Product {
+                    Name = "carrot",
+                    Amount = 12,
                     Price = 2.4,
-                    Id = 1 };)
+                    Id = 1
+                });
+
+             this.products.Add(
+            new Product {
+                Name = "pear",
+                Amount = 12,
+                Price = 2.4,
+                Id = 2
+            });
+            this.products.Add(
+            new Product {
+                Name = "papaya",
+                Amount = 12,
+                Price = 2.4,
+                Id = 3
+            });
             return "je moeder";
         }
     }
