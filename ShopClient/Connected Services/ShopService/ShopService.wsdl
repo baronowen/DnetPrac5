@@ -19,6 +19,24 @@
   <wsdl:message name="IShopService_GetAllProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IShopService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_GetSaldo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaldo" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_GetSaldo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaldoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IShopService">
     <wsdl:operation name="PostNote">
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/PostNote" message="tns:IShopService_PostNote_InputMessage" />
@@ -27,6 +45,18 @@
     <wsdl:operation name="GetAllProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/GetAllProducts" message="tns:IShopService_GetAllProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShopService/GetAllProductsResponse" message="tns:IShopService_GetAllProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/Login" message="tns:IShopService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/LoginResponse" message="tns:IShopService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/Register" message="tns:IShopService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/RegisterResponse" message="tns:IShopService_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaldo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/GetSaldo" message="tns:IShopService_GetSaldo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/GetSaldoResponse" message="tns:IShopService_GetSaldo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShopService" type="tns:IShopService">
@@ -42,6 +72,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllProducts">
       <soap:operation soapAction="http://tempuri.org/IShopService/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IShopService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IShopService/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaldo">
+      <soap:operation soapAction="http://tempuri.org/IShopService/GetSaldo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

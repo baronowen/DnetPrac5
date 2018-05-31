@@ -121,6 +121,24 @@ namespace ShopClient.ShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetAllProducts", ReplyAction="http://tempuri.org/IShopService/GetAllProductsResponse")]
         System.Threading.Tasks.Task<ShopClient.ShopService.Product[]> GetAllProductsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
+        string Login(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
+        System.Threading.Tasks.Task<string> LoginAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Register", ReplyAction="http://tempuri.org/IShopService/RegisterResponse")]
+        string Register(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Register", ReplyAction="http://tempuri.org/IShopService/RegisterResponse")]
+        System.Threading.Tasks.Task<string> RegisterAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetSaldo", ReplyAction="http://tempuri.org/IShopService/GetSaldoResponse")]
+        string GetSaldo(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetSaldo", ReplyAction="http://tempuri.org/IShopService/GetSaldoResponse")]
+        System.Threading.Tasks.Task<string> GetSaldoAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,6 +182,30 @@ namespace ShopClient.ShopService {
         
         public System.Threading.Tasks.Task<ShopClient.ShopService.Product[]> GetAllProductsAsync() {
             return base.Channel.GetAllProductsAsync();
+        }
+        
+        public string Login(string username, string password) {
+            return base.Channel.Login(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<string> LoginAsync(string username, string password) {
+            return base.Channel.LoginAsync(username, password);
+        }
+        
+        public string Register(string username) {
+            return base.Channel.Register(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> RegisterAsync(string username) {
+            return base.Channel.RegisterAsync(username);
+        }
+        
+        public string GetSaldo(int id) {
+            return base.Channel.GetSaldo(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetSaldoAsync(int id) {
+            return base.Channel.GetSaldoAsync(id);
         }
     }
 }
