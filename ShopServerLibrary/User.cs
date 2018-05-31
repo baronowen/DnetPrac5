@@ -15,38 +15,7 @@ namespace ShopServerLibrary
         public string Password { get; set; }
         public double Balance { get; set; }
         //cant be public, why we will never know??????????????????
-        public List<Product> UserProducts = new List<Product>();
-
-
-
-        public List<Product> generateJsonFromProducts() {
-            //hard coded products
-
-            this.UserProducts.Add(
-                new Product {
-                    Name = "carrot",
-                    Amount = 12,
-                    Price = 2.4,
-                    Id = 1
-                });
-
-            this.UserProducts.Add(
-           new Product {
-               Name = "pear",
-               Amount = 12,
-               Price = 2.4,
-               Id = 2
-           });
-            this.UserProducts.Add(
-            new Product {
-                Name = "papaya",
-                Amount = 12,
-                Price = 2.4,
-                Id = 3
-            });
-
-            return UserProducts;
-
+        public List<Product> BoughtProducts = new List<Product>();
 
         }
     }

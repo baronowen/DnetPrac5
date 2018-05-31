@@ -19,11 +19,11 @@ namespace ShopServerLibrary
         List<Product> GetAllProducts();
 
         [OperationContract]
-        string LowerProductAmount(Product p, int amount);
+        string BuyProduct(User u, Product p, int amount);
 
 
 
-        // Methods related to users.
+        // Methods related to users.        
         [OperationContract]
         string Login(string username, string password);
 
