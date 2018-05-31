@@ -17,14 +17,14 @@ namespace ShopServerLibrary
 
         public int Amount { get; set; }
 
-        List<Product> products = new List<Product>();
+        List<Product> products;
         
 
         //Hardcoded product list:
         //Will later be replaced by database.
         public List<Product> GenerateProducts()
         {
-
+            products = new List<Product>();
             this.products.Add(
                 new Product
                 {
@@ -51,11 +51,16 @@ namespace ShopServerLibrary
                 });
 
             //var json = JsonConvert.SerializeObject(this.products);
-            foreach(Product p in products)
-            {
-                Console.WriteLine("{0} voor {1}", p.Name, p.Price);
-            }
+            //foreach(Product p in products)
+            //{
+            //    Console.WriteLine("{0} voor {1}", p.Name, p.Price);
+            //}
             return products;
+        }
+
+        public override string ToString()
+        {
+            return "Product: " + Id + " " + Name + " " + Price + " " + Amount;
         }
     }
 }

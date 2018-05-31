@@ -12,16 +12,11 @@ namespace ShopServerLibrary
     {
         Product p = new Product();
 
-        public string GetAllProducts()
+        public List<Product> GetAllProducts()
         {
-            return p.GenerateProducts().ToString();
+            return p.GenerateProducts();
         }
 
-        public string GetProductById(int id)
-        {
-
-
-            return "1 product";
-        }
+        
     }
 }

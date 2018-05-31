@@ -13,17 +13,19 @@ namespace quickTestApp
             User user = new User();
             Console.WriteLine(user.generateJsonFromProducts());
 
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("\n--------------------------------\n");
 
             Product p = new Product();
-            Console.WriteLine(p.GenerateProducts());
-            //var pr = p.GenerateProducts();
-            //foreach(Product product in pr)
-            //{
-            //    Console.WriteLine(product.Name);
-            //}
+            ProductService ps = new ProductService();
+            Console.WriteLine(ps.GetAllProducts());
+            foreach (Product product in p.GenerateProducts())
+            {
+                Console.WriteLine(product.ToString());
+            }
 
-            Console.WriteLine("--------------------------------");            
+            Console.WriteLine("\n--------------------------------\n");
+
+            
         }
     }
 }

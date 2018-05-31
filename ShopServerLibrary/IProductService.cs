@@ -12,9 +12,9 @@ namespace ShopServerLibrary
     public interface IProductService
     {
         [OperationContract]
-        string GetAllProducts();
+        List<Product> GetAllProducts();
 
         [OperationContract]
-        string GetProductById(int id);
+        
     }
 }
