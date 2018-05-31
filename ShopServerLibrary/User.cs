@@ -1,25 +1,27 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ShopServerLibrary
 {
-    class User
+    public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public double Saldo { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Product> UserProducts { get; set; }
 
 
 
         public string generateJsonFromProducts() {
             //hard coded products
 
-            this.Products.Add(
+            this.UserProducts.Add(
                 new Product {
                     Name = "carrot",
                     Amount = 12,
@@ -27,21 +29,24 @@ namespace ShopServerLibrary
                     Id = 1
                 });
 
-             this.Products.Add(
+             this.UserProducts.Add(
             new Product {
                 Name = "pear",
                 Amount = 12,
                 Price = 2.4,
                 Id = 2
             });
-            this.Products.Add(
+            this.UserProducts.Add(
             new Product {
                 Name = "papaya",
                 Amount = 12,
                 Price = 2.4,
                 Id = 3
             });
-            return "je moeder";
+
+
+            var json = JsonConvert.SerializeObject(UserProducts);
+            return json;
         }
     }
 }
