@@ -10,13 +10,16 @@ namespace ShopServerLibrary
 {
     public class User
     {
+       
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public double Saldo { get; set; }
-        public List<Product> UserProducts { get; set; }
+        //cant be public, why we will never know??????????????????
+        List<Product> UserProducts = new List<Product>();
 
-
+        
 
         public string generateJsonFromProducts() {
             //hard coded products
@@ -29,13 +32,13 @@ namespace ShopServerLibrary
                     Id = 1
                 });
 
-             this.UserProducts.Add(
-            new Product {
-                Name = "pear",
-                Amount = 12,
-                Price = 2.4,
-                Id = 2
-            });
+            this.UserProducts.Add(
+           new Product {
+               Name = "pear",
+               Amount = 12,
+               Price = 2.4,
+               Id = 2
+           });
             this.UserProducts.Add(
             new Product {
                 Name = "papaya",
@@ -45,7 +48,7 @@ namespace ShopServerLibrary
             });
 
 
-            var json = JsonConvert.SerializeObject(UserProducts);
+            var json = JsonConvert.SerializeObject(this.UserProducts);
             return json;
         }
     }
