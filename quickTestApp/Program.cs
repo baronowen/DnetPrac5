@@ -12,7 +12,7 @@ namespace quickTestApp
 
             User user = new User();
             Console.WriteLine(user.generateJsonFromProducts());
-            Console.Read();
+            
         }
     }
 }

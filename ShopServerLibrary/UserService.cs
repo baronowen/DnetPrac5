@@ -23,8 +23,10 @@
             return "20";
         }
         public string GetUserProductsJSON(int id) {
+            //hard coded user needs to be found using id
+            User user = new User();
 
-            return "grgege";
+            return user.generateJsonFromProducts();
         }
 
         // password generator that comes with c# isn't any good so made a new one
