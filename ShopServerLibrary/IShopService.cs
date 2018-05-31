@@ -31,8 +31,8 @@ namespace ShopServerLibrary
         string Register(string username);
 
 
-        //[OperationContract]
-        //string GetUserProductsJSON(int id);
-        //TODO this one needs fixing.
+        [OperationContract]
+        string GetBoughtProducts(int id);
+
     }
 }
