@@ -19,7 +19,7 @@ namespace ShopServerLibrary
         public string generateJsonFromProducts() {
             //hard coded products
 
-            this.products.Add(
+            this.Products.Add(
                 new Product {
                     Name = "carrot",
                     Amount = 12,
@@ -27,14 +27,14 @@ namespace ShopServerLibrary
                     Id = 1
                 });
 
-             this.products.Add(
+             this.Products.Add(
             new Product {
                 Name = "pear",
                 Amount = 12,
                 Price = 2.4,
                 Id = 2
             });
-            this.products.Add(
+            this.Products.Add(
             new Product {
                 Name = "papaya",
                 Amount = 12,
