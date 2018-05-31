@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +10,18 @@ namespace ShopServerLibrary
 {
     public class User
     {
-       
+
 
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public double Saldo { get; set; }
         //cant be public, why we will never know??????????????????
-        List<Product> UserProducts = new List<Product>();
+        public List<Product> UserProducts = new List<Product>();
 
-        
 
-        public string generateJsonFromProducts() {
+
+        public List<Product> generateJsonFromProducts() {
             //hard coded products
 
             this.UserProducts.Add(
@@ -47,9 +47,9 @@ namespace ShopServerLibrary
                 Id = 3
             });
 
+            return UserProducts;
 
-            var json = JsonConvert.SerializeObject(this.UserProducts);
-            return json;
+
         }
     }
 }
