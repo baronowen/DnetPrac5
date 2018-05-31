@@ -28,7 +28,7 @@ namespace ShopServerLibrary
         [OperationContract]
         string GetSaldo(int id);
 
-        [OperationContract]
-        string GetUserProductsJSON(int id);
+        //[OperationContract]
+        //string GetUserProductsJSON(int id);
     }
 }

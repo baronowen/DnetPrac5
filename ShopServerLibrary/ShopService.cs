@@ -43,11 +43,11 @@ namespace ShopServerLibrary
             return "20";
         }
 
-        public string GetUserProductsJSON(int id)
-        {
-            //hard coded user needs to be found using id
-            User user = new User();
-            return user.generateJsonFromProducts();
-        }
+        //public string GetUserProductsJSON(int id)
+        //{
+        //    //hard coded user needs to be found using id
+        //    User user = new User();
+        //    return user.generateJsonFromProducts();
+        //}
     }
 }
