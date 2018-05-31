@@ -14,9 +14,9 @@ namespace ShopServerLibrary
         public string Username { get; set; }
         public string Password { get; set; }
         public double Balance { get; set; }
-        //cant be public, why we will never know??????????????????
+
         public List<Product> BoughtProducts = new List<Product>();
 
-        }
     }
 }
+
