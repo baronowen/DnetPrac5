@@ -12,7 +12,8 @@ namespace ShopServerLibrary
     {
         public string GetAllProducts()
         {
-            return "all products";
+            Product p = new Product();
+            return p.GenerateProducts();
         }
 
         public string GetProductById()

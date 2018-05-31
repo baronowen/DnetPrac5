@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ShopServerLibrary
 {
-    class Product
+    public class Product
     {
         public int Id { get; set; }
 
@@ -16,11 +17,12 @@ namespace ShopServerLibrary
 
         public int Amount { get; set; }
 
-        public List<Product> Products { get; set; }
+        List<Product> Products = new List<Product>();
 
 
-        public string GenerateProductList()
+        public string GenerateProducts()
         {
+
             this.Products.Add(
                 new Product
                 {
@@ -45,7 +47,9 @@ namespace ShopServerLibrary
                     Price = 3,
                     Id = 3
                 });
-            return this.Products.ToString();
+
+            var json = JsonConvert.SerializeObject(this.Products);
+            return json;
         }
     }
 }
