@@ -14,7 +14,21 @@ namespace ShopServerLibrary
         [OperationContract]
         void PostNote(string from, string note);
 
+        // Methods related to products.
         [OperationContract]
         List<Product> GetAllProducts();
+
+        // Methods related to users.
+        [OperationContract]
+        string Login(string username, string password);
+
+        [OperationContract]
+        string Register(string username);
+
+        [OperationContract]
+        string GetSaldo(int id);
+
+        [OperationContract]
+        string GetUserProductsJSON(int id);
     }
 }

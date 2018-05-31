@@ -17,9 +17,37 @@ namespace ShopServerLibrary
             Console.WriteLine("{0}: {1}", from, note);
         }
 
+        // Methods related to products.
         public List<Product> GetAllProducts()
         {
             return p.GenerateProducts();
+        }
+
+        // Methods related to users.
+        public string Register(string username)
+        {
+            return "nope";
+        }
+
+        public string Login(string username, string password)
+        {
+            //hard coded stuff that needs to be changed when persistence has been done
+            return username == "username" && password == "passworded" ? 
+                string.Format("You entered: {0}, {1}", username, password) 
+                : "Username and password combination is wrong!";
+        }
+
+        public string GetSaldo(int id)
+        {
+            //hard coded stuff that needs to be changed when persistence has been done
+            return "20";
+        }
+
+        public string GetUserProductsJSON(int id)
+        {
+            //hard coded user needs to be found using id
+            User user = new User();
+            return user.generateJsonFromProducts();
         }
     }
 }
