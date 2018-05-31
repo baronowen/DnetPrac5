@@ -22,7 +22,7 @@
             //hard coded stuff that needs to be changed when persistence has been done
             return "20";
         }
-        public string GetUserProductsJson(int id) {
+        public string GetUserProductsJSON(int id) {
 
             return "grgege";
         }
