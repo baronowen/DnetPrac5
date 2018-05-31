@@ -60,6 +60,12 @@
     <None Include="Connected Services\ShopService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ShopService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ShopService\ShopClient.ShopService.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ShopService\ShopService.wsdl" />
   </ItemGroup>
   <ItemGroup>

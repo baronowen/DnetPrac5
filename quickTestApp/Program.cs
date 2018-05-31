@@ -16,8 +16,8 @@ namespace quickTestApp
             Console.WriteLine("\n--------------------------------\n");
 
             Product p = new Product();
-            ProductService ps = new ProductService();
-            Console.WriteLine(ps.GetAllProducts());
+            ShopService ss = new ShopService();
+            Console.WriteLine(ss.GetAllProducts());
             foreach (Product product in p.GenerateProducts())
             {
                 Console.WriteLine(product.ToString());

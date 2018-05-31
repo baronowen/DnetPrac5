@@ -13,18 +13,24 @@ namespace ShopClient
         {
             ShopServiceClient shopProxy = new ShopServiceClient();
 
-            Console.WriteLine("Please enter your name: ");
-            string name = Console.ReadLine();
-            while (true)
+            Console.WriteLine("All Products\n");
+            foreach(Product p in shopProxy.GetAllProducts())
             {
-                Console.WriteLine("Type a note (or hit enter to quit): ");
-                string note = Console.ReadLine();
-                if (string.IsNullOrEmpty(note))
-                {
-                    break;
-                }
-                shopProxy.PostNote(name, note);
+                Console.WriteLine(p.Name);
             }
+
+            //Console.WriteLine("Please enter your name: ");
+            //string name = Console.ReadLine();
+            //while (true)
+            //{
+            //    Console.WriteLine("Type a note (or hit enter to quit): ");
+            //    string note = Console.ReadLine();
+            //    if (string.IsNullOrEmpty(note))
+            //    {
+            //        break;
+            //    }
+            //    shopProxy.PostNote(name, note);
+            //}
         }
     }
 }

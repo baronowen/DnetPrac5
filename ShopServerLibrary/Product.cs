@@ -49,12 +49,6 @@ namespace ShopServerLibrary
                     Price = 3,
                     Id = 3
                 });
-
-            //var json = JsonConvert.SerializeObject(this.products);
-            //foreach(Product p in products)
-            //{
-            //    Console.WriteLine("{0} voor {1}", p.Name, p.Price);
-            //}
             return products;
         }
 

@@ -13,5 +13,8 @@ namespace ShopServerLibrary
     {
         [OperationContract]
         void PostNote(string from, string note);
+
+        [OperationContract]
+        List<Product> GetAllProducts();
     }
 }

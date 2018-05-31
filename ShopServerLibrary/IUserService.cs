@@ -15,6 +15,7 @@ namespace ShopServerLibrary
 
         [OperationContract]
         string getsaldo(int id);
+
         [OperationContract]
         string GetUserProductsJSON(int id);
        
