@@ -64,12 +64,6 @@ namespace ShopServerLibrary
                 : "Username and password combination is wrong!";
         }
 
-        public string GetBalance(int id)
-        {
-            //hard coded stuff that needs to be changed when persistence has been done
-            return "20";
-        }
-
         //public string GetUserProductsJSON(int id)
         //{
         //    //hard coded user needs to be found using id

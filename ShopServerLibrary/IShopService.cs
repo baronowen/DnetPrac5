@@ -30,8 +30,6 @@ namespace ShopServerLibrary
         [OperationContract]
         string Register(string username);
 
-        [OperationContract]
-        string GetBalance(int id);
 
         //[OperationContract]
         //string GetUserProductsJSON(int id);
