@@ -18,7 +18,13 @@
                  ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=":   €"/>
+                        <TextBlock Text="{Binding Price}"/>
+                        <TextBlock Text="    Amount left: "/>
+                        <TextBlock Text="{Binding Amount}"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
