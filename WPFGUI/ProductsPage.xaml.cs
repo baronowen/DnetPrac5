@@ -27,7 +27,6 @@ namespace WPFGUI
 
             InitializeComponent();
 
-            Product p = new Product();
             ShopServiceClient ssc = new ShopServiceClient();
             productBox.ItemsSource = ssc.GetAllProducts();
         }
