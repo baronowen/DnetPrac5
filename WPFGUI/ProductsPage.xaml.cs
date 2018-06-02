@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGUI.ShopGuiReference;
 
 namespace WPFGUI
 {
@@ -22,7 +23,13 @@ namespace WPFGUI
     {
         public ProductsPage()
         {
+            ShopServiceClient shopProxy = new ShopServiceClient();
+
             InitializeComponent();
+
+            Product p = new Product();
+            ShopServiceClient ssc = new ShopServiceClient();
+            productBox.ItemsSource = ssc.GetAllProducts();
         }
     }
 }

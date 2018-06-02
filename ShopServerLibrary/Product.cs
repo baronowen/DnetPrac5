@@ -17,35 +17,35 @@ namespace ShopServerLibrary
 
         public int Amount { get; set; }
 
-        List<Product> products;
+        public List<Product> Products { get; set; }
 
 
         //Hardcoded product list:
         //Will later be replaced by database.
         public List<Product> GenerateProducts() {
-            products = new List<Product>();
-            this.products.Add(
+            Products = new List<Product>();
+            this.Products.Add(
                 new Product {
                     Name = "Carrot",
                     Amount = 20,
                     Price = 2.50,
                     Id = 1
                 });
-            this.products.Add(
+            this.Products.Add(
                 new Product {
                     Name = "Apple",
                     Amount = 30,
                     Price = 1,
                     Id = 2
                 });
-            this.products.Add(
+            this.Products.Add(
                 new Product {
                     Name = "Lettuce",
                     Amount = 50,
                     Price = 3,
                     Id = 3
                 });
-            return products;
+            return Products;
         }
 
         public override string ToString() {

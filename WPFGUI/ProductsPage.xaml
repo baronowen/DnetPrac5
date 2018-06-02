@@ -9,13 +9,22 @@
       Title="ProductsPage">
 
     <Grid Background="#FF93D4C0">
-        <Label Content="Your inventory" HorizontalAlignment="Left" Margin="185,117,0,0" VerticalAlignment="Top"/>
-        <Label Content="Our products" HorizontalAlignment="Left" Margin="462,117,0,0" VerticalAlignment="Top"/>
-        <ListBox HorizontalAlignment="Left" Height="114" Margin="185,148,0,0" VerticalAlignment="Top" Width="178"/>
-        <ListBox HorizontalAlignment="Left" Height="114" Margin="462,148,0,0" VerticalAlignment="Top" Width="241"/>
-        <Label Content="Money left: €" HorizontalAlignment="Left" Margin="185,267,0,0" VerticalAlignment="Top"/>
-        <Button Content="Buy" HorizontalAlignment="Left" Margin="462,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="612,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Your inventory" HorizontalAlignment="Left" Margin="151,117,0,0" VerticalAlignment="Top"/>
+        <Label Content="Our products" HorizontalAlignment="Left" Margin="428,117,0,0" VerticalAlignment="Top"/>
+        <ListBox HorizontalAlignment="Left" Height="114" Margin="151,148,0,0" VerticalAlignment="Top" Width="154"/>
+        <ListBox Name="productBox" HorizontalAlignment="Left" 
+                 Height="114" Margin="428,148,0,0" VerticalAlignment="Top" 
+                 Width="241" Uid="AllProducts"
+                 ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="Money left: €" HorizontalAlignment="Left" Margin="151,267,0,0" VerticalAlignment="Top"/>
+        <Button Content="Buy" HorizontalAlignment="Left" Margin="428,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="578,270,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Page>
