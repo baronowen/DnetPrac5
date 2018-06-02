@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGUI.ShopGuiReference;
 
 namespace WPFGUI
 {
@@ -21,6 +22,7 @@ namespace WPFGUI
     public partial class MainWindow : Window
     {
         public MainWindow() {
+            ShopServiceClient shopProxy = new ShopServiceClient();
             InitializeComponent();
         }
 
