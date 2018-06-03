@@ -18,8 +18,8 @@ namespace ShopServerLibrary
         [OperationContract]
         List<Product> GetAllProducts();
 
-        [OperationContract]
-        string BuyProduct(User u, Product p, int amount);
+        //[OperationContract]
+        //string BuyProduct(User u, Product p, int amount);
 
 
 
@@ -31,8 +31,8 @@ namespace ShopServerLibrary
         string Register(string username);
 
 
-        [OperationContract]
-        List<Product> GetBoughtProducts(/*int id*/);
+        //[OperationContract]
+        //List<Product> GetBoughtProducts(/*int id*/);
 
     }
 }

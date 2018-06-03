@@ -43,7 +43,7 @@ GO
 
 -- Creating table 'ProductSet'
 CREATE TABLE [dbo].[ProductSet] (
-    [ProductId] int IDENTITY(1,1) NOT NULL,
+    [ProductId] INT NOT NULL,
     [ProductName] nvarchar(max)  NOT NULL,
     [Price] float  NOT NULL,
     [amount] int  NOT NULL
@@ -52,7 +52,7 @@ GO
 
 -- Creating table 'InventorySet'
 CREATE TABLE [dbo].[InventorySet] (
-    [InventoryId] int IDENTITY(1,1) NOT NULL,
+    [InventoryId] int NOT NULL,
     [Amount] bigint  NOT NULL,
     [ProductId] int  NOT NULL,
 	[CustomerId] int not null
@@ -61,7 +61,7 @@ GO
 
 -- Creating table 'CustomerSet'
 CREATE TABLE [dbo].[CustomerSet] (
-    [CustomerId] int IDENTITY(1,1) NOT NULL,
+    [CustomerId] int NOT NULL,
     [Username] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
     [Balance] float  NOT NULL

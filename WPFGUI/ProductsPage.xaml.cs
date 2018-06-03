@@ -29,7 +29,7 @@ namespace WPFGUI
             InitializeComponent();
 
             productBox.ItemsSource = ssc.GetAllProducts();
-            boughtBox.ItemsSource = ssc.GetBoughtProducts();
+            //boughtBox.ItemsSource = ssc.GetBoughtProducts();
             moneyLeft.Content = "Money left: €"; //+ ;
         }
 

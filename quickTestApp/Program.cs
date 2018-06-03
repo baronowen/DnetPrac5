@@ -11,19 +11,12 @@ namespace quickTestApp
     {
         static void Main(string[] args) {
 
-            User user = new User();
-            Console.WriteLine(user.generateJsonFromProducts());
-            //TODO above function needs to be fixed.
-
-            Console.WriteLine("\n--------------------------------\n");
+            Customer user = new Customer();
 
             Product p = new Product();
             ShopService ss = new ShopService();
             Console.WriteLine(ss.GetAllProducts());
-            foreach (Product product in p.GenerateProducts())
-            {
-                Console.WriteLine(product.ToString());
-            }
+            
 
             Console.WriteLine("\n--------------------------------\n");
 
