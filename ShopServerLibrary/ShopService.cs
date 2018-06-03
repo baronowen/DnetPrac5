@@ -12,7 +12,7 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
-        User user = new User();
+        Customer user = new Customer();
 
         public void PostNote(string from, string note) {
             Console.WriteLine("{0}: {1}", from, note);
@@ -35,7 +35,7 @@ namespace ShopServerLibrary
             }
         }
 
-        public string BuyProduct(User u, Product p, int amount) {
+        public string BuyProduct(Customer u, Product p, int amount) {
             if (p.Amount == 0) {
                 return "Product " + p.Name + " is no longer available";
             }
@@ -59,8 +59,17 @@ namespace ShopServerLibrary
 
         // Methods related to users.        
         public string Register(string username) {
+
             char[] passwordArray = username.ToArray();
             Array.Reverse(passwordArray);
+            string password = new string(passwordArray);
+            using (mymodelContainer ctx = new mymodelContainer()) {
+                Customer newCustomer = new Customer {
+                    Balance = 50.0,
+                    Username = username,
+                    Password =
+                }
+            }
             return new string(passwordArray);
             //TODO password generation needs to be added.
         }
