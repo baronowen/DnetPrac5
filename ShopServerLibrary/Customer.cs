@@ -18,6 +18,9 @@ namespace ShopServerLibrary
         public string Username { get; set; }
         public string Password { get; set; }
         public double Balance { get; set; }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 574461909afa288b13e7b5e2b151591119704d48
     }
 }

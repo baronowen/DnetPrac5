@@ -20,7 +20,19 @@ namespace ShopServerLibrary
 
         // Methods related to products.
         public List<Product> GetAllProducts() {
-            return p.GenerateProducts();
+            using (mymodelContainer ctx = new mymodelContainer())
+            {
+                var products = from p in ctx.ProductSet
+                               where p.Amount > 0
+                               select p;
+
+                List<Product> pList = new List<Product>();
+                foreach(Product p in products)
+                {
+                    pList.Add(p);
+                }
+                return pList;
+            }
         }
 
         public string BuyProduct(Customer u, Product p, int amount) {
