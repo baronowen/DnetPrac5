@@ -19,7 +19,7 @@ namespace ShopServerLibrary
         List<Product> GetAllProducts();
 
         [OperationContract]
-        string BuyProduct(User u, Product p, int amount);
+        string BuyProduct(Customer u, Product p, int amount);
 
 
 
