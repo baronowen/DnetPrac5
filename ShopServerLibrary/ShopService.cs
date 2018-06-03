@@ -12,6 +12,8 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
+        User user = new User();
+
         public void PostNote(string from, string note) {
             Console.WriteLine("{0}: {1}", from, note);
         }
@@ -59,8 +61,7 @@ namespace ShopServerLibrary
         }
 
         public List<Product> GetBoughtProducts(int id) {
-            User user = new User();
-            return user.BoughtProducts;
+            return user.FillBoughtProducts();
         }
 
     }
