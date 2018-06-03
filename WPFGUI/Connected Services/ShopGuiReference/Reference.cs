@@ -34,6 +34,9 @@ namespace WPFGUI.ShopGuiReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double PriceField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WPFGUI.ShopGuiReference.Product[] ProductsField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -92,6 +95,19 @@ namespace WPFGUI.ShopGuiReference {
                 if ((this.PriceField.Equals(value) != true)) {
                     this.PriceField = value;
                     this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WPFGUI.ShopGuiReference.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
                 }
             }
         }
@@ -250,10 +266,10 @@ namespace WPFGUI.ShopGuiReference {
         System.Threading.Tasks.Task<string> RegisterAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
-        WPFGUI.ShopGuiReference.Product[] GetBoughtProducts(int id);
+        WPFGUI.ShopGuiReference.Product[] GetBoughtProducts();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
-        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync(int id);
+        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -323,12 +339,12 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.RegisterAsync(username);
         }
         
-        public WPFGUI.ShopGuiReference.Product[] GetBoughtProducts(int id) {
-            return base.Channel.GetBoughtProducts(id);
+        public WPFGUI.ShopGuiReference.Product[] GetBoughtProducts() {
+            return base.Channel.GetBoughtProducts();
         }
         
-        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync(int id) {
-            return base.Channel.GetBoughtProductsAsync(id);
+        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync() {
+            return base.Channel.GetBoughtProductsAsync();
         }
     }
 }

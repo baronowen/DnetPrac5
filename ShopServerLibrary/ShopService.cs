@@ -60,7 +60,7 @@ namespace ShopServerLibrary
                 : "Username and password combination is wrong!";
         }
 
-        public List<Product> GetBoughtProducts(int id) {
+        public List<Product> GetBoughtProducts(/*int id*/) {
             return user.FillBoughtProducts();
         }
 

@@ -11,7 +11,20 @@
     <Grid Background="#FF93D4C0">
         <Label Content="Your inventory" HorizontalAlignment="Left" Margin="151,117,0,0" VerticalAlignment="Top"/>
         <Label Content="Our products" HorizontalAlignment="Left" Margin="428,117,0,0" VerticalAlignment="Top"/>
-        <ListBox HorizontalAlignment="Left" Height="114" Margin="151,148,0,0" VerticalAlignment="Top" Width="154"/>
+        <ListBox Name="boughtBox" HorizontalAlignment="Left" 
+                 Height="114" Margin="151,148,0,0" VerticalAlignment="Top" 
+                 Width="154"
+                 ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="       "/>
+                        <TextBlock Text="{Binding Amount}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <ListBox Name="productBox" HorizontalAlignment="Left" 
                  Height="114" Margin="428,148,0,0" VerticalAlignment="Top" 
                  Width="241" Uid="AllProducts"

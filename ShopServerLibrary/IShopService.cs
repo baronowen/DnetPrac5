@@ -32,7 +32,7 @@ namespace ShopServerLibrary
 
 
         [OperationContract]
-        List<Product> GetBoughtProducts(int id);
+        List<Product> GetBoughtProducts(/*int id*/);
 
     }
 }
