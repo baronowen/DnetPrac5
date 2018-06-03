@@ -21,8 +21,6 @@ namespace ShopServerLibrary
         //[OperationContract]
         //string BuyProduct(User u, Product p, int amount);
 
-
-
         // Methods related to users.        
         [OperationContract]
         string Login(string username, string password);
