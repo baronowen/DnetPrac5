@@ -16,7 +16,7 @@ namespace ShopServerLibrary
 
         // Methods related to products.
         [OperationContract]
-        List<Product> GetAllProducts();
+        List<ProductSet> GetAllProducts();
 
         //[OperationContract]
         //string BuyProduct(User u, Product p, int amount);

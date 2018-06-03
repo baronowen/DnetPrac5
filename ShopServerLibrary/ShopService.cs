@@ -5,32 +5,37 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
+using System.Data.SqlClient;
 namespace ShopServerLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
     public class ShopService : IShopService
     {
-        Product p = new Product();
-        Customer user = new Customer();
+        ProductSet p = new ProductSet();
+        CustomerSet user = new CustomerSet();
 
         public void PostNote(string from, string note) {
             Console.WriteLine("{0}: {1}", from, note);
         }
 
         // Methods related to products.
-        public List<Product> GetAllProducts() {
-            using (mymodelContainer ctx = new mymodelContainer())
-            {
+        public List<ProductSet> GetAllProducts() {
+            using (shopDBEntities1 ctx = new shopDBEntities1()) {
                 var products = from p in ctx.ProductSet
-                               where p.Amount > 0
+                               where p.amount > 0
                                select p;
 
-                List<Product> pList = new List<Product>();
-                foreach(Product p in products)
-                {
-                    pList.Add(p);
+                List<ProductSet> pList = new List<ProductSet>();
+                foreach (ProductSet p in products) {
+                    pList.Add(new ProductSet {
+                        amount = p.amount,
+                        ProductName = p.ProductName,
+                        Price = p.Price,
+                        ProductId = p.ProductId
+                    });
+
                 }
+
                 return pList;
             }
         }
@@ -63,8 +68,8 @@ namespace ShopServerLibrary
             char[] passwordArray = username.ToArray();
             Array.Reverse(passwordArray);
             string password = new string(passwordArray);
-            using (mymodelContainer ctx = new mymodelContainer()) {
-                Customer newCustomer = new Customer {
+            using (shopDBEntities1 ctx = new shopDBEntities1()) {
+                CustomerSet newCustomer = new CustomerSet {
                     Balance = 50.0,
                     Username = username,
                     Password = password

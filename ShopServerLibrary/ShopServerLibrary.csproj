@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -55,10 +55,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs">
+    <Compile Include="CustomerSet.cs">
       <DependentUpon>mymodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Inventory.cs">
+    <Compile Include="InventorySet.cs">
       <DependentUpon>mymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="IShopService.cs" />
@@ -77,31 +77,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>mymodel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
+    <Compile Include="ProductSet.cs">
       <DependentUpon>mymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <EntityDeploy Include="mymodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>mymodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="mymodel.edmx.diagram">
+      <DependentUpon>mymodel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="mymodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>mymodel.Context.cs</LastGenOutput>
       <DependentUpon>mymodel.edmx</DependentUpon>
+      <LastGenOutput>mymodel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="mymodel.edmx.sql" />
     <Content Include="mymodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>mymodel.cs</LastGenOutput>
       <DependentUpon>mymodel.edmx</DependentUpon>
+      <LastGenOutput>mymodel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -12,20 +12,20 @@ namespace ShopServerLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class CustomerSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Inventory()
+        public CustomerSet()
         {
-            this.Product = new HashSet<Product>();
+            this.InventorySet = new HashSet<InventorySet>();
         }
     
-        public int InventoryId { get; set; }
-        public long Amount { get; set; }
-        public int ProductId { get; set; }
+        public int CustomerId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public double Balance { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
+        public virtual ICollection<InventorySet> InventorySet { get; set; }
     }
 }

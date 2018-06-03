@@ -22,24 +22,21 @@ namespace WPFGUI
     public partial class ProductsPage : Page
     {
         ShopServiceClient ssc = new ShopServiceClient();
-        public ProductsPage()
-        {
+        public ProductsPage() {
             ShopServiceClient shopProxy = new ShopServiceClient();
 
             InitializeComponent();
 
             productBox.ItemsSource = ssc.GetAllProducts();
-            //boughtBox.ItemsSource = ssc.GetBoughtProducts();
+            ;
             moneyLeft.Content = "Money left: €"; //+ ;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button_Click(object sender, RoutedEventArgs e) {
             ssc.GetAllProducts();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
             //TODO paramaters for user and product need to be filled in
             //ssc.BuyProduct(, , 1);
         }

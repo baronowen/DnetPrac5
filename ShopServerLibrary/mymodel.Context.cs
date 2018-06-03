@@ -12,21 +12,19 @@ namespace ShopServerLibrary
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class mymodelContainer : DbContext
+    using System.Data.SqlClient;
+    public partial class shopDBEntities1 : DbContext
     {
-        public mymodelContainer()
-            : base("name=mymodelContainer")
-        {
+        public shopDBEntities1()
+            : base(@"metadata=res://*/mymodel.csdl|res://*/mymodel.ssdl|res://*/mymodel.msl;provider=System.Data.SqlClient;provider connection string='data source=(localdb)\MSSQLLocalDB;initial catalog=shopDB;integrated security=True;pooling=False;MultipleActiveResultSets=True;App=EntityFramework'") {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             throw new UnintentionalCodeFirstException();
         }
-    
-        public virtual DbSet<Product> ProductSet { get; set; }
-        public virtual DbSet<Inventory> InventorySet { get; set; }
-        public virtual DbSet<Customer> CustomerSet { get; set; }
+
+        public virtual DbSet<CustomerSet> CustomerSet { get; set; }
+        public virtual DbSet<InventorySet> InventorySet { get; set; }
+        public virtual DbSet<ProductSet> ProductSet { get; set; }
     }
 }
