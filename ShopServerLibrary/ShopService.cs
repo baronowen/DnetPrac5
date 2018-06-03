@@ -61,6 +61,8 @@ namespace ShopServerLibrary
         }
 
         public List<Product> GetBoughtProducts(/*int id*/) {
+            //TODO paramater is needed when database is in use.
+            //NOTE dont forget to update service reference.
             return user.FillBoughtProducts();
         }
 
