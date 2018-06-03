@@ -31,7 +31,6 @@ namespace WPFGUI
             productBox.ItemsSource = ssc.GetAllProducts();
             boughtBox.ItemsSource = ssc.GetBoughtProducts();
             moneyLeft.Content = "Money left: €"; //+ ;
-            //TODO add balance
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -7,15 +7,15 @@
     <Schema Namespace="mymodel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="mymodelStoreContainer">
     <EntitySet Name="ProductSet" EntityType="mymodel.Store.ProductSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="InventorySet" EntityType="mymodel.Store.InventorySet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InventorySet" EntityType="mymodel.Store.InventorySet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CustomerSet" EntityType="mymodel.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProductInventory1" Association="mymodel.Store.ProductInventory1">
-      <End EntitySet="ProductSet" Role="Product" />
-      <End EntitySet="InventorySet" Role="Inventory" />
+      <End Role="Product" EntitySet="ProductSet" />
+      <End Role="Inventory" EntitySet="InventorySet" />
     </AssociationSet>
     <AssociationSet Name="CustomerInventory" Association="mymodel.Store.CustomerInventory">
-      <End EntitySet="CustomerSet" Role="Customer" />
-      <End EntitySet="InventorySet" Role="Inventory" />
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Inventory" EntitySet="InventorySet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductSet">
@@ -24,15 +24,16 @@
     </Key>
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProductPrice" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="InventorySet">
     <Key>
       <PropertyRef Name="InventoryId" />
     </Key>
-    <Property Name="InventoryId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-    <Property Name="Amount" Nullable="false" Type="bigint" />
-    <Property Name="ProductId" Nullable="false" Type="int" />
+    <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="bigint" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CustomerSet">
     <Key>
@@ -41,13 +42,13 @@
     <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Money" Type="float" Nullable="false" />
+    <Property Name="Balance" Type="float" Nullable="false" />
     <Property Name="InventoryId" Type="int" Nullable="false" />
     <Property Name="Inventory_InventoryId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ProductInventory1">
-    <End Type="mymodel.Store.ProductSet" Multiplicity="1" Role="Product" />
-    <End Type="mymodel.Store.InventorySet" Multiplicity="*" Role="Inventory" />
+    <End Role="Product" Type="mymodel.Store.ProductSet" Multiplicity="1" />
+    <End Role="Inventory" Type="mymodel.Store.InventorySet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="ProductId" />
@@ -58,8 +59,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CustomerInventory">
-    <End Type="mymodel.Store.CustomerSet" Multiplicity="*" Role="Customer" />
-    <End Type="mymodel.Store.InventorySet" Multiplicity="1" Role="Inventory" />
+    <End Role="Customer" Type="mymodel.Store.CustomerSet" Multiplicity="*" />
+    <End Role="Inventory" Type="mymodel.Store.InventorySet" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Inventory">
         <PropertyRef Name="InventoryId" />
@@ -76,14 +77,14 @@
         <EntityContainer Name="mymodelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ProductSet" EntityType="mymodel.Product" />
           <EntitySet Name="InventorySet" EntityType="mymodel.Inventory" />
-          <AssociationSet Name="ProductInventory1" Association="mymodel.ProductInventory1">
-            <End EntitySet="ProductSet" Role="Product" />
-            <End EntitySet="InventorySet" Role="Inventory" />
-          </AssociationSet>
           <EntitySet Name="CustomerSet" EntityType="mymodel.Customer" />
           <AssociationSet Name="CustomerInventory" Association="mymodel.CustomerInventory">
             <End EntitySet="CustomerSet" Role="Customer" />
             <End EntitySet="InventorySet" Role="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="ProductInventory" Association="mymodel.ProductInventory">
+            <End Role="Product" EntitySet="ProductSet" />
+            <End Role="Inventory" EntitySet="InventorySet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
@@ -93,7 +94,6 @@
           <Property Name="ProductId" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="ProductName" Nullable="false" Type="String" />
           <Property Name="Price" Nullable="false" Type="Double" />
-          <NavigationProperty Name="Inventory" Relationship="mymodel.ProductInventory1" FromRole="Product" ToRole="Inventory" />
           <Property Name="amount" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Inventory">
@@ -102,22 +102,10 @@
           </Key>
           <Property Name="InventoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="Amount" Nullable="false" Type="Int64" />
-          <NavigationProperty Name="Product" Relationship="mymodel.ProductInventory1" FromRole="Inventory" ToRole="Product" />
           <Property Name="ProductId" Nullable="false" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="mymodel.CustomerInventory" FromRole="Inventory" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="mymodel.ProductInventory" FromRole="Inventory" ToRole="Product" />
         </EntityType>
-        <Association Name="ProductInventory1">
-          <End Type="mymodel.Product" Multiplicity="1" Role="Product" />
-          <End Type="mymodel.Inventory" Multiplicity="*" Role="Inventory" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -133,6 +121,10 @@
           <End Type="mymodel.Customer" Multiplicity="1" Role="Customer" />
           <End Type="mymodel.Inventory" Multiplicity="1" Role="Inventory" />
         </Association>
+        <Association Name="ProductInventory">
+          <End Type="mymodel.Product" Role="Product" Multiplicity="*" />
+          <End Type="mymodel.Inventory" Role="Inventory" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -144,7 +136,8 @@
         <MappingFragment StoreEntitySet="ProductSet">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="Price" ColumnName="ProductPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -163,7 +156,7 @@
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Balance" ColumnName="Money" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
           <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -200,8 +193,8 @@
         <EntityTypeShape EntityType="mymodel.Product" PointX="5" PointY="4.625" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mymodel.Inventory" PointX="8" PointY="1.5" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mymodel.Customer" Width="1.5" PointX="5" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector ManuallyRouted="false" Association="mymodel.ProductInventory1" />
         <AssociationConnector ManuallyRouted="false" Association="mymodel.CustomerInventory" />
+        <AssociationConnector Association="mymodel.ProductInventory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
