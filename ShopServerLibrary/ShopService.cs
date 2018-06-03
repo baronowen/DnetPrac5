@@ -12,7 +12,7 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
-        User user = new User();
+        Customer user = new Customer();
 
         public void PostNote(string from, string note) {
             Console.WriteLine("{0}: {1}", from, note);
@@ -23,7 +23,7 @@ namespace ShopServerLibrary
             return p.GenerateProducts();
         }
 
-        public string BuyProduct(User u, Product p, int amount) {
+        public string BuyProduct(Customer u, Product p, int amount) {
             if (p.Amount == 0) {
                 return "Product " + p.Name + " is no longer available";
             }
