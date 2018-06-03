@@ -11,15 +11,13 @@ namespace ShopServerLibrary
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Customer
     {
         public int CustomerId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public double Balance { get; set; }
-        public int InventoryId { get; set; }
-    
-        public virtual Inventory Inventory { get; set; }
+
     }
 }
