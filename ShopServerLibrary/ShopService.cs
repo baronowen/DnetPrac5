@@ -55,8 +55,8 @@ namespace ShopServerLibrary
                 Customer newCustomer = new Customer {
                     Balance = 50.0,
                     Username = username,
-                    Password =
-                }
+                    Password = password
+                };
             }
             return new string(passwordArray);
             //TODO password generation needs to be added.
