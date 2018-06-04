@@ -64,7 +64,7 @@ namespace ShopServerLibrary
         public string BuyProduct(int user, int product, int amount) {
             CSV csv = new CSV();
             List<Product> inventory = csv.readInventory(user);
-
+            User user = findUser(user);
             bool itemexists = (from item in inventory
                                where item.Id == product
                                select item).Any();
@@ -76,7 +76,7 @@ namespace ShopServerLibrary
             else {
                 csv.saveInventory(product, user, amount);
             }
-            Product productresult = findProduct(product);
+
 
         }
 

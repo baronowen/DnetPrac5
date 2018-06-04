@@ -40,11 +40,18 @@ namespace ShopServerLibrary
         }
         public void saveInventoryFromScratch(List<Product> products, int user) {
             var path = "\\inventory.csv";
-            for
-            String newLine = string.Format("{0},{1},{2},{3}", id, product, user, amount);
-            Array.Resize(ref csv, csv.Length + 1);
-            csv[csv.Length - 1] = newLine;
-            File.WriteAllLines(path, csv);
+            List<String> lines = new List<string>();
+            int id = 1;
+            foreach (Product product in products) {
+
+                String newLine = string.Format("{0},{1},{2},{3}", id, product.Id, user, product.Amount);
+                id++;
+                lines.Add(newLine);
+            }
+
+
+
+            File.WriteAllLines(path, lines);
         }
 
         public List<User> readUsers() {
