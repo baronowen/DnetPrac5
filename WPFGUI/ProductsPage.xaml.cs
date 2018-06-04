@@ -26,9 +26,11 @@ namespace WPFGUI
         {
             InitializeComponent();
 
+            User x = (User)Application.Current.Properties["user"];
+
             productBox.ItemsSource = ssc.GetAllProducts();
             boughtBox.ItemsSource = ssc.GetBoughtProducts();
-            moneyLeft.Content = "Money left: €"; //+ ;
+            moneyLeft.Content = "Money left: €" + x.Balance;
             //TODO add balance
         }
 
@@ -41,8 +43,9 @@ namespace WPFGUI
         {
             //TODO paramaters for user and product need to be filled in
             Product p = (Product)productBox.SelectedItem;
+            User u = (User)Application.Current.Properties["user"];
 
-            //ssc.BuyProduct(, , 1);
+            MessageBoxResult result = MessageBox.Show(ssc.BuyProduct(u, p, 1));
         }
     }
 }
