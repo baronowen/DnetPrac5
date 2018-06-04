@@ -41,9 +41,11 @@ namespace WPFGUI
             //TODO paramaters for user and product need to be filled in
             Product p = (Product)productBox.SelectedItem;
             User u = (User)Application.Current.Properties["user"];
-            string result = ssc.BuyProduct(u.Id, p.Id, 1);
-            MessageBox.Show(result);
-            refresh();
+            if (p != null) {
+                string result = ssc.BuyProduct(u.Id, p.Id, 1);
+                MessageBox.Show(result);
+                refresh();
+            }
         }
 
         private void refresh() {

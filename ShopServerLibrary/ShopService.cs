@@ -67,8 +67,10 @@ namespace ShopServerLibrary
             User foundUser = findUser(user);
             Product foundProduct = findProduct(product);
             List<User> allUsers = csv.readUsers();
+            List<Product> allProducts = csv.readProducts();
+
             double totalPrice = foundProduct.Price * amount;
-            if (foundProduct.Amount > amount) {
+            if (foundProduct.Amount - amount >= 0) {
                 if (foundUser.Balance > totalPrice) {
 
                     bool itemexists = (from item in inventory
@@ -86,6 +88,11 @@ namespace ShopServerLibrary
                     int indexUser = allUsers.FindIndex(x => x.Id == user);
                     allUsers[indexUser].Balance -= totalPrice;
                     csv.updateUser(allUsers);
+                    int indexShop = allProducts.FindIndex(x => x.Id == product);
+                    allProducts[indexShop].Amount -= amount;
+                    csv.updateProduct(allProducts);
+
+
                     return totalPrice.ToString();
                 }
 

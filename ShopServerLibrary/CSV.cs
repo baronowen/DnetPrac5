@@ -19,7 +19,19 @@ namespace ShopServerLibrary
             csv[csv.Length - 1] = newLine;
             File.WriteAllLines(path, csv);
         }
+        public void updateProduct(List<Product> products) {
+            var path = "\\products.csv";
+            List<String> lines = new List<string>();
+            int id = 1;
+            foreach (Product product in products) {
 
+                String newLine = string.Format("{0},{1},{2},{3}", id, product.Name, product.Price, product.Amount);
+                id++;
+                lines.Add(newLine);
+            }
+
+            File.WriteAllLines(path, lines);
+        }
         public void saveUser(User user) {
             var path = "\\users.csv";
             String[] csv = File.ReadAllLines(path);
