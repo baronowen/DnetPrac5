@@ -11,8 +11,8 @@ namespace ShopHost
     class Program
     {
         static void Main(string[] args) {
-            ShopService ss = new ShopService();
-            ss.initialize();
+            // ShopService ss = new ShopService();
+            //ss.initialize();
             using (ServiceHost host = new ServiceHost(typeof(ShopService))) {
 
                 host.Open();

@@ -25,17 +25,18 @@ namespace ShopServerLibrary
 
 
 
-        public void initialize() {
-            Generator gen = new Generator();
-            Users = gen.GenerateUsers();
-            foreach (User user in Users) {
-                csv.saveUser(user);
-            }
-            Products = gen.GenerateProducts();
-            foreach (Product p in Products) {
-                csv.saveProduct(p);
-            }
-        }
+        /*  public void initialize() {
+              Generator gen = new Generator();
+              Users = gen.GenerateUsers();
+              foreach (User user in Users) {
+                  csv.saveUser(user);
+              }
+              Products = gen.GenerateProducts();
+              foreach (Product p in Products) {
+                  csv.saveProduct(p);
+              }
+          }
+          */
         // Methods related to products.
         public List<Product> GetAllProducts() {
             //List<Product> pList = new List<Product>();

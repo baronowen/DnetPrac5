@@ -39,5 +39,15 @@ namespace ShopServerLibrary
             File.WriteAllLines(path, csv);
         }
 
+        /*    public List<User> readUsers() {
+
+            }
+            public List<Product> readProducts() {
+
+            }
+            public List<Product> readInventory(int user) {
+
+            }
+            */
     }
 }
