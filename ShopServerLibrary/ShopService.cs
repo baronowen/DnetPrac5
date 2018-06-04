@@ -7,6 +7,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+
+
 namespace ShopServerLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
@@ -14,11 +16,18 @@ namespace ShopServerLibrary
     {
         Product p = new Product();
         User user = new User();
+        CSV csv = new CSV();
 
-        public void PostNote(string from, string note) {
-            Console.WriteLine("{0}: {1}", from, note);
+        public List<User> Users { get; set; }
+
+
+        public void initialize() {
+            Generator gen = new Generator();
+            Users = gen.GenerateUsers();
+            foreach (User user in Users) {
+                csv.saveUser(user);
+            }
         }
-
         // Methods related to products.
         public List<Product> GetAllProducts() {
             //List<Product> pList = new List<Product>();
@@ -71,29 +80,33 @@ namespace ShopServerLibrary
             //TODO password generation needs to be added.
         }
 
-        public bool Login(string username, string password) {
+        public int Login(string username, string password) {
 
-            bool login = false;
-            using (mymodelContainer ctx = new mymodelContainer())
-            {
-                var user = from u in ctx.UserSet
-                           where u.UserName == username &&
-                           u.Password == password
-                           select u;
+            int login = 0;
+            /*      using (mymodelContainer ctx = new mymodelContainer())
+                  {
+                      var user = from u in ctx.UserSet
+                                 where u.UserName == username &&
+                                 u.Password == password
+                                 select u;
 
-                foreach(var u in user)
-                {
-                    if(u.UserName == username 
-                        && u.Password == password)
-                    {
-                        login = true;
-                    }
-                    else
-                    {
-                        login = false;
-                    }
-                }
-            }
+                      foreach(var u in user)
+                      {
+                          if(u.UserName == username 
+                              && u.Password == password)
+                          {
+                              login = true;
+                          }
+                          else
+                          {
+                              login = false;
+                          }
+                      }
+                  }
+
+              */
+
+
             return login;
 
             //hard coded stuff that needs to be changed when persistence has been done

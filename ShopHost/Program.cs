@@ -10,10 +10,11 @@ namespace ShopHost
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            using (ServiceHost host = new ServiceHost(typeof(ShopService)))
-            {
+        static void Main(string[] args) {
+            ShopService ss = new ShopService();
+            ss.initialize();
+            using (ServiceHost host = new ServiceHost(typeof(ShopService))) {
+
                 host.Open();
                 Console.WriteLine("Service ready");
                 Console.ReadKey();
