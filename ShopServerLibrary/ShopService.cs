@@ -71,11 +71,35 @@ namespace ShopServerLibrary
             //TODO password generation needs to be added.
         }
 
-        public string Login(string username, string password) {
+        public bool Login(string username, string password) {
+
+            bool login = false;
+            using (mymodelContainer ctx = new mymodelContainer())
+            {
+                var user = from u in ctx.UserSet
+                           where u.UserName == username &&
+                           u.Password == password
+                           select u;
+
+                foreach(var u in user)
+                {
+                    if(u.UserName == username 
+                        && u.Password == password)
+                    {
+                        login = true;
+                    }
+                    else
+                    {
+                        login = false;
+                    }
+                }
+            }
+            return login;
+
             //hard coded stuff that needs to be changed when persistence has been done
-            return username == "username" && password == "passworded"
-                ? string.Format("You entered: {0}, {1}", username, password)
-                : "Username and password combination is wrong!";
+            //return username == "username" && password == "passworded"
+            //    ? string.Format("You entered: {0}, {1}", username, password)
+            //    : "Username and password combination is wrong!";
         }
 
         public List<Product> GetBoughtProducts(/*int id*/) {

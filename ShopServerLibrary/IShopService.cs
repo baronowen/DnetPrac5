@@ -25,7 +25,7 @@ namespace ShopServerLibrary
 
         // Methods related to users.        
         [OperationContract]
-        string Login(string username, string password);
+        bool Login(string username, string password);
 
         [OperationContract]
         string Register(string username);

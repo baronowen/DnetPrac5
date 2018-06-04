@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGUI.ShopGuiReference;
 
 namespace WPFGUI
 {
@@ -20,11 +21,22 @@ namespace WPFGUI
     /// </summary>
     public partial class LoginPage : Page
     {
+        ShopServiceClient ssc = new ShopServiceClient();
+
         public LoginPage() {
             InitializeComponent();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e) {
+            //if (ssc.Login(UserText.ToString(), PasswordText.ToString()))
+            //{
+            //    this.NavigationService.Navigate(new ProductsPage());
+            //}
+            //else
+            //{
+            //    MessageBoxResult result = MessageBox.Show("Username of password is wrong!" +
+            //        "pl try again.");
+            //}
             this.NavigationService.Navigate(new ProductsPage());
         }
     }

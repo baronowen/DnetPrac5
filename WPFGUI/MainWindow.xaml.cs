@@ -22,8 +22,9 @@ namespace WPFGUI
     public partial class MainWindow : Window
     {
         public MainWindow() {
-            //ShopServiceClient shopProxy = new ShopServiceClient();
+            ShopServiceClient shopProxy = new ShopServiceClient();
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {

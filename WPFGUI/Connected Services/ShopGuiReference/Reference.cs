@@ -254,10 +254,10 @@ namespace WPFGUI.ShopGuiReference {
         System.Threading.Tasks.Task<string> BuyProductAsync(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
-        string Login(string username, string password);
+        bool Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
-        System.Threading.Tasks.Task<string> LoginAsync(string username, string password);
+        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Register", ReplyAction="http://tempuri.org/IShopService/RegisterResponse")]
         string Register(string username);
@@ -323,11 +323,11 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.BuyProductAsync(u, p, amount);
         }
         
-        public string Login(string username, string password) {
+        public bool Login(string username, string password) {
             return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<string> LoginAsync(string username, string password) {
+        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
         }
         
