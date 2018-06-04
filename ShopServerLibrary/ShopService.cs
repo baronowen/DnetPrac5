@@ -56,7 +56,9 @@ namespace ShopServerLibrary
             //    }
             //}
             //return pList;
-            return p.GenerateProducts();
+
+            CSV csv = new CSV();
+            return csv.readProducts();
         }
 
         public string BuyProduct(User user, Product product, int amount) {
@@ -112,6 +114,8 @@ namespace ShopServerLibrary
         public int Login(string username, string password) {
 
             int login = 0;
+            CSV csv = new CSV();
+
             /*      using (mymodelContainer ctx = new mymodelContainer())
                   {
                       var user = from u in ctx.UserSet
