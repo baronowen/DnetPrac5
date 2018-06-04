@@ -13,7 +13,7 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
-        User user = new User();
+        User u = new User();
 
         public void PostNote(string from, string note) {
             Console.WriteLine("{0}: {1}", from, note);
@@ -41,25 +41,40 @@ namespace ShopServerLibrary
             return p.GenerateProducts();
         }
 
-        public string BuyProduct(User u, Product p, int amount) {
-            if (p.Amount == 0) {
-                return "Product " + p.Name + " is no longer available";
+        public string BuyProduct(User user, Product product, int amount) {
+            if (product.Amount == 0) {
+                return "Product " + product.Name + " is no longer available";
             }
-            else if (amount <= p.Amount) {
-                if (u.Balance >= (p.Price * amount)) {
-                    u.Balance = u.Balance - (p.Price * amount);
-                    p.Amount = p.Amount - amount;
-                    // bought product has yet to be added to BoughtProducts
+            else if (amount <= product.Amount) {
+                if (user.Balance >= (product.Price * amount)) {
 
-                    return "You have bought " + p.Name + " for €" + (p.Price * amount) + ".\n" +
-                        "Your new balance is €" + u.Balance;
+                    user.Balance = user.Balance - (product.Price * amount);
+                    product.Amount = product.Amount - amount;
+
+                    if (u.BoughtProducts.Contains(product))
+                    {
+                        int index = u.BoughtProducts.FindIndex(a => a.Id == product.Id);
+                        u.BoughtProducts[index].Amount++;
+                    }
+                    else
+                    {
+                        u.BoughtProducts.Add(new Product
+                        {
+                            Name = product.Name,
+                            Price = product.Price,
+                            Amount = amount,
+                            Id = product.Id
+                        });
+                    }
+                    return "You have bought " + product.Name + " for €" + (product.Price * amount) + ".\n" +
+                        "Your new balance is €" + user.Balance;
                 }
                 else {
                     return "Your balance is insufficient";
                 }
             }
             else {
-                return p.Name + " is sold out.";
+                return product.Name + " is sold out.";
             }
         }
 
@@ -105,7 +120,7 @@ namespace ShopServerLibrary
         public List<Product> GetBoughtProducts(/*int id*/) {
             //TODO paramater is needed when database is in use.
             //NOTE dont forget to update service reference.
-            return user.FillBoughtProducts();
+            return u.FillBoughtProducts();
         }
 
     }
