@@ -15,14 +15,14 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
-<<<<<<< HEAD
-        User user = new User();
+
+        User u = new User();
         CSV csv = new CSV();
 
         public List<User> Users { get; set; }
-=======
-        User u = new User();
->>>>>>> b3ff1eb5ef20668393b630704830d60efcb1eb35
+
+
+
 
 
         public void initialize() {
@@ -64,15 +64,12 @@ namespace ShopServerLibrary
                     user.Balance = user.Balance - (product.Price * amount);
                     product.Amount = product.Amount - amount;
 
-                    if (u.BoughtProducts.Contains(product))
-                    {
+                    if (u.BoughtProducts.Contains(product)) {
                         int index = u.BoughtProducts.FindIndex(a => a.Id == product.Id);
                         u.BoughtProducts[index].Amount++;
                     }
-                    else
-                    {
-                        u.BoughtProducts.Add(new Product
-                        {
+                    else {
+                        u.BoughtProducts.Add(new Product {
                             Name = product.Name,
                             Price = product.Price,
                             Amount = amount,
