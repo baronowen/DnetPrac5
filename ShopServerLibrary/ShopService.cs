@@ -80,10 +80,13 @@ namespace ShopServerLibrary
 
         // Methods related to users.        
         public string Register(string username) {
+            //TODO check if username is already in use
+
             char[] passwordArray = username.ToArray();
             Array.Reverse(passwordArray);
-            return new string(passwordArray);
-            //TODO password generation needs to be added.
+            string s = new string(passwordArray);
+
+            return s;
         }
 
         public bool Login(string username, string password) {

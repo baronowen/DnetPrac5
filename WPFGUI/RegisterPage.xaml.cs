@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFGUI.ShopGuiReference;
 
 namespace WPFGUI
 {
@@ -20,12 +21,13 @@ namespace WPFGUI
     /// </summary>
     public partial class RegisterPage : Page
     {
+        ShopServiceClient ssc = new ShopServiceClient();
         public RegisterPage() {
             InitializeComponent();
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {
-            PasswordText.Content = "register button clicked";
+            PasswordText.Content = ssc.Register(UserText.Text.ToString());
         }
     }
 }
