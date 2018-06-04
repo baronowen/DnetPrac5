@@ -28,7 +28,7 @@ namespace WPFGUI
             User x = (User)Application.Current.Properties["user"];
 
             productBox.ItemsSource = ssc.GetAllProducts();
-            boughtBox.ItemsSource = ssc.GetBoughtProducts();
+            boughtBox.ItemsSource = ssc.GetBoughtProducts(x.Id);
             moneyLeft.Content = "Money left: €" + x.Balance;
             //TODO add balance
         }
@@ -41,14 +41,16 @@ namespace WPFGUI
             //TODO paramaters for user and product need to be filled in
             Product p = (Product)productBox.SelectedItem;
             User u = (User)Application.Current.Properties["user"];
-            ssc.BuyProduct
-            MessageBoxResult result = MessageBox.Show(p.Id.ToString());
+            string result = ssc.BuyProduct(u.Id, p.Id, 1);
+            MessageBox.Show(result);
+            refresh();
         }
 
         private void refresh() {
             productBox.ItemsSource = ssc.GetAllProducts();
-            boughtBox.ItemsSource = ssc.GetBoughtProducts();
+
             User x = (User)Application.Current.Properties["user"];
+            boughtBox.ItemsSource = ssc.GetBoughtProducts(x.Id);
             x = ssc.findUser(x.Id);
             Application.Current.Properties["user"] = x;
             moneyLeft.Content = "Money left: €" + x.Balance;

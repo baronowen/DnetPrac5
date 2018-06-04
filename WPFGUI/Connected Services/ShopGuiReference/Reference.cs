@@ -226,10 +226,10 @@ namespace WPFGUI.ShopGuiReference {
         System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetAllProductsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/BuyProduct", ReplyAction="http://tempuri.org/IShopService/BuyProductResponse")]
-        string BuyProduct(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount);
+        string BuyProduct(int u, int p, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/BuyProduct", ReplyAction="http://tempuri.org/IShopService/BuyProductResponse")]
-        System.Threading.Tasks.Task<string> BuyProductAsync(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount);
+        System.Threading.Tasks.Task<string> BuyProductAsync(int u, int p, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
         int Login(string username, string password);
@@ -244,10 +244,10 @@ namespace WPFGUI.ShopGuiReference {
         System.Threading.Tasks.Task<string> RegisterAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
-        WPFGUI.ShopGuiReference.Product[] GetBoughtProducts();
+        WPFGUI.ShopGuiReference.Product[] GetBoughtProducts(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
-        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync();
+        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/findUser", ReplyAction="http://tempuri.org/IShopService/findUserResponse")]
         WPFGUI.ShopGuiReference.User findUser(int id);
@@ -291,11 +291,11 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.GetAllProductsAsync();
         }
         
-        public string BuyProduct(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount) {
+        public string BuyProduct(int u, int p, int amount) {
             return base.Channel.BuyProduct(u, p, amount);
         }
         
-        public System.Threading.Tasks.Task<string> BuyProductAsync(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount) {
+        public System.Threading.Tasks.Task<string> BuyProductAsync(int u, int p, int amount) {
             return base.Channel.BuyProductAsync(u, p, amount);
         }
         
@@ -315,12 +315,12 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.RegisterAsync(username);
         }
         
-        public WPFGUI.ShopGuiReference.Product[] GetBoughtProducts() {
-            return base.Channel.GetBoughtProducts();
+        public WPFGUI.ShopGuiReference.Product[] GetBoughtProducts(int id) {
+            return base.Channel.GetBoughtProducts(id);
         }
         
-        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync() {
-            return base.Channel.GetBoughtProductsAsync();
+        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync(int id) {
+            return base.Channel.GetBoughtProductsAsync(id);
         }
         
         public WPFGUI.ShopGuiReference.User findUser(int id) {

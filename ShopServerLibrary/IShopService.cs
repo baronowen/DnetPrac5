@@ -30,7 +30,7 @@ namespace ShopServerLibrary
 
 
         [OperationContract]
-        List<Product> GetBoughtProducts(/*int id*/);
+        List<Product> GetBoughtProducts(int id);
 
         [OperationContract]
         User findUser(int id);

@@ -64,19 +64,38 @@ namespace ShopServerLibrary
         public string BuyProduct(int user, int product, int amount) {
             CSV csv = new CSV();
             List<Product> inventory = csv.readInventory(user);
-            User user = findUser(user);
-            bool itemexists = (from item in inventory
-                               where item.Id == product
-                               select item).Any();
-            if (itemexists) {
-                int indexProduct = inventory.FindIndex(x => x.Id == product);
-                inventory[indexProduct].Amount += amount;
-                csv.saveInventoryFromScratch(inventory, user);
+            User foundUser = findUser(user);
+            Product foundProduct = findProduct(product);
+            List<User> allUsers = csv.readUsers();
+            double totalPrice = foundProduct.Price * amount;
+            if (foundProduct.Amount > amount) {
+                if (foundUser.Balance > totalPrice) {
+
+                    bool itemexists = (from item in inventory
+                                       where item.Id == product
+                                       select item).Any();
+
+                    if (itemexists) {
+                        int indexProduct = inventory.FindIndex(x => x.Id == product);
+                        inventory[indexProduct].Amount += amount;
+                        csv.saveInventoryFromScratch(inventory, user);
+                    }
+                    else {
+                        csv.saveInventory(product, user, amount);
+                    }
+                    int indexUser = allUsers.FindIndex(x => x.Id == user);
+                    allUsers[indexUser].Balance -= totalPrice;
+                    csv.updateUser(allUsers);
+                    return totalPrice.ToString();
+                }
+
+                else {
+                    return "balance is too low";
+                }
             }
             else {
-                csv.saveInventory(product, user, amount);
+                return "item is not in stock";
             }
-
 
         }
 
@@ -155,10 +174,10 @@ namespace ShopServerLibrary
 
         //TODO extra function that gets the user id based on username and password
 
-        public List<Product> GetBoughtProducts(/*int id*/) {
+        public List<Product> GetBoughtProducts(int id) {
             //TODO paramater is needed when database is in use.
             //NOTE dont forget to update service reference.
-            return u.FillBoughtProducts();
+            return csv.readInventory(id);
         }
         public User findUser(int id) {
             CSV csv = new CSV();
