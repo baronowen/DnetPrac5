@@ -31,6 +31,21 @@ namespace ShopServerLibrary
 
             return BoughtProducts;
         }
+
+        public List<User> GenerateUsers()
+        {
+            List<User> users = new List<User>();
+            users.Add(new User
+            {
+                Id = 1,
+                Username = "owen",
+                Password = "newo",
+                Balance = 50,
+                BoughtProducts = new List<Product>()
+            });
+
+            return users;
+        }
     }
 }
 

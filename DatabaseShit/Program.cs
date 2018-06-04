@@ -12,24 +12,29 @@ namespace DatabaseShit
         {
             using (mymodelContainer ctx = new mymodelContainer())
             {
-                Product p1 = new Product {
-                    ProductName = "Carrot",
-                    Price = 2.50,
-                    Amount = 20 };
-                Product p2 = new Product {
-                    ProductName = "Apple",
-                    Price = 1,
-                    Amount = 10 };
-                Product p3 = new Product
-                {
-                    ProductName = "Lettuce",
-                    Price = 2.99,
-                    Amount = 15
-                };
-                ctx.ProductSet.Add(p1);
-                ctx.ProductSet.Add(p2);
-                ctx.ProductSet.Add(p3);
-                ctx.SaveChanges();
+                //    Product p1 = new Product
+                //    {
+                //        ProductName = "Carrot",
+                //        Price = 2.50,
+                //        Amount = 20
+                //    };
+                //    Product p2 = new Product
+                //    {
+                //        ProductName = "Apple",
+                //        Price = 1,
+                //        Amount = 10
+                //    };
+                //    Product p3 = new Product
+                //    {
+                //        ProductName = "Lettuce",
+                //        Price = 2.99,
+                //        Amount = 15
+                //    };
+                //    ctx.ProductSet.Add(p1);
+                //    ctx.ProductSet.Add(p2);
+                //    ctx.ProductSet.Add(p3);
+
+                //    ctx.SaveChanges();
 
                 var products = from p in ctx.ProductSet
                                select p;
