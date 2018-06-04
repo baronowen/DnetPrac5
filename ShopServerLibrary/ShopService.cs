@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseShit;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace ShopServerLibrary
 
         // Methods related to products.
         public List<Product> GetAllProducts() {
+            using (mymodelContainer ctx = new mymodelContainer())
+            {
+
+            }
+
             return p.GenerateProducts();
         }
 

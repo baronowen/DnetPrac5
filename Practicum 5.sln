@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quickTestApp", "quickTestAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFGUI", "WPFGUI\WPFGUI.csproj", "{6613CCD1-A7D0-45BA-9EF1-45842956FFF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseShit", "DatabaseShit\DatabaseShit.csproj", "{8EA51349-0DC9-41CB-AA51-5DE1C74FDE80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6613CCD1-A7D0-45BA-9EF1-45842956FFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6613CCD1-A7D0-45BA-9EF1-45842956FFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6613CCD1-A7D0-45BA-9EF1-45842956FFF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA51349-0DC9-41CB-AA51-5DE1C74FDE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA51349-0DC9-41CB-AA51-5DE1C74FDE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA51349-0DC9-41CB-AA51-5DE1C74FDE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA51349-0DC9-41CB-AA51-5DE1C74FDE80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
