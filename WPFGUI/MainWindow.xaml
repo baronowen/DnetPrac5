@@ -9,9 +9,9 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
             <Button Content="REGISTER" MinWidth="100" Click="Button_Click" />
-            <Button Content="LOGIN" MinWidth="100" Margin="10,0,0,0" Click="Button_Click_1"/>
+            <Button Content="LOGIN" MinWidth="100" Margin="10,0,0,0" Click="Button_Click_1" />
         </StackPanel>
         <Frame x:Name="MainFrame" Margin="0,35,0,0" NavigationUIVisibility="Hidden" />
-        <Label x:Name ="user" Content="Label" HorizontalAlignment="Left" Margin="255,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name ="user" Content="Label" HorizontalAlignment="Left" Margin="255,4,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>

@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFGUI.ShopGuiReference;
 
 namespace WPFGUI
@@ -22,11 +9,10 @@ namespace WPFGUI
     /// </summary>
     public partial class LoginPage : Page
     {
-        ShopServiceClient ssc = new ShopServiceClient();
+        private ShopServiceClient ssc = new ShopServiceClient();
 
         public LoginPage() {
             InitializeComponent();
-
         }
 
         private void Login_Click(object sender, RoutedEventArgs e) {
@@ -42,7 +28,6 @@ namespace WPFGUI
 
             int id = ssc.Login(UserText.Text.ToString(), PasswordText.Text.ToString());
             if (id > 0) {
-
                 Application.Current.Properties["user"] = ssc.findUser(id);
                 this.NavigationService.Navigate(new ProductsPage());
             }

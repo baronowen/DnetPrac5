@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShopClient.ShopService;
+﻿using ShopClient.ShopService;
+using System;
 
 namespace ShopClient
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
-        {
+        private static void Main(string[] args) {
             ShopServiceClient shopProxy = new ShopServiceClient();
 
             Console.WriteLine("All Products\n");
-            foreach(Product p in shopProxy.GetAllProducts())
-            {
+            foreach (Product p in shopProxy.GetAllProducts()) {
                 Console.WriteLine(p.Name);
             }
 

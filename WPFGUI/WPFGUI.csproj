@@ -166,11 +166,5 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DatabaseShit\DatabaseShit.csproj">
-      <Project>{8ea51349-0dc9-41cb-aa51-5de1c74fde80}</Project>
-      <Name>DatabaseShit</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

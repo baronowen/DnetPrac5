@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
 
 namespace ShopServerLibrary
 {
@@ -11,7 +7,6 @@ namespace ShopServerLibrary
     [ServiceContract]
     public interface IShopService
     {
-
         // Methods related to products.
         [OperationContract]
         List<Product> GetAllProducts();
@@ -19,15 +14,12 @@ namespace ShopServerLibrary
         [OperationContract]
         string BuyProduct(int u, int p, int amount);
 
-
-
-        // Methods related to users.        
+        // Methods related to users.
         [OperationContract]
         int Login(string username, string password);
 
         [OperationContract]
         string Register(string username);
-
 
         [OperationContract]
         List<Product> GetBoughtProducts(int id);
