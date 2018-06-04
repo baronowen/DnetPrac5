@@ -21,11 +21,23 @@ namespace ShopServerLibrary
 
         // Methods related to products.
         public List<Product> GetAllProducts() {
-            using (mymodelContainer ctx = new mymodelContainer())
-            {
-
-            }
-
+            //using (mymodelContainer ctx = new mymodelContainer())
+            //{
+            //    var products = from p in ctx.ProductSet
+            //                   select new Product
+            //                   {
+            //                       Name = p.ProductName,
+            //                       Amount = p.Amount,
+            //                       Price = p.Price,
+            //                       Id = p.ProductId
+            //                   };
+            //    List<Product> pList = new List<Product>();
+            //    foreach (Product p in products)
+            //    {
+            //        pList.Add(p);
+            //    }
+            //    return pList;
+            //}
             return p.GenerateProducts();
         }
 
