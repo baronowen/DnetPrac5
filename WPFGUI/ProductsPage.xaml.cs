@@ -40,7 +40,7 @@ namespace WPFGUI
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //TODO paramaters for user and product need to be filled in
-            var p = productBox.SelectedItem;
+            Product p = (Product)productBox.SelectedItem;
 
             //ssc.BuyProduct(, , 1);
         }
