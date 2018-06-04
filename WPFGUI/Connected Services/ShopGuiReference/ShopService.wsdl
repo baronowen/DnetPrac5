@@ -7,12 +7,6 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ShopServerLibrary/ShopService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ShopServerLibrary" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IShopService_PostNote_InputMessage">
-    <wsdl:part name="parameters" element="tns:PostNote" />
-  </wsdl:message>
-  <wsdl:message name="IShopService_PostNote_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PostNoteResponse" />
-  </wsdl:message>
   <wsdl:message name="IShopService_GetAllProducts_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProducts" />
   </wsdl:message>
@@ -43,11 +37,13 @@
   <wsdl:message name="IShopService_GetBoughtProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBoughtProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IShopService_findUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:findUser" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_findUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IShopService">
-    <wsdl:operation name="PostNote">
-      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/PostNote" message="tns:IShopService_PostNote_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/PostNoteResponse" message="tns:IShopService_PostNote_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/GetAllProducts" message="tns:IShopService_GetAllProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShopService/GetAllProductsResponse" message="tns:IShopService_GetAllProducts_OutputMessage" />
@@ -68,18 +64,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/GetBoughtProducts" message="tns:IShopService_GetBoughtProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShopService/GetBoughtProductsResponse" message="tns:IShopService_GetBoughtProducts_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/findUser" message="tns:IShopService_findUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/findUserResponse" message="tns:IShopService_findUser_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShopService" type="tns:IShopService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="PostNote">
-      <soap:operation soapAction="http://tempuri.org/IShopService/PostNote" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAllProducts">
       <soap:operation soapAction="http://tempuri.org/IShopService/GetAllProducts" style="document" />
       <wsdl:input>
@@ -118,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBoughtProducts">
       <soap:operation soapAction="http://tempuri.org/IShopService/GetBoughtProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <soap:operation soapAction="http://tempuri.org/IShopService/findUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -29,11 +29,19 @@ namespace ShopServerLibrary
             csv[csv.Length - 1] = newLine;
             File.WriteAllLines(path, csv);
         }
-        public void saveInventory(Product product, User user, int amount) {
+        public void saveInventory(int product, int user, int amount) {
             var path = "\\inventory.csv";
             String[] csv = File.ReadAllLines(path);
             int id = csv.Length + 1;
-            String newLine = string.Format("{0},{1},{2},{3}", id, product.Id, user.Id, amount);
+            String newLine = string.Format("{0},{1},{2},{3}", id, product, user, amount);
+            Array.Resize(ref csv, csv.Length + 1);
+            csv[csv.Length - 1] = newLine;
+            File.WriteAllLines(path, csv);
+        }
+        public void saveInventoryFromScratch(List<Product> products, int user) {
+            var path = "\\inventory.csv";
+            for
+            String newLine = string.Format("{0},{1},{2},{3}", id, product, user, amount);
             Array.Resize(ref csv, csv.Length + 1);
             csv[csv.Length - 1] = newLine;
             File.WriteAllLines(path, csv);

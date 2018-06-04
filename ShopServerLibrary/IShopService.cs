@@ -17,7 +17,7 @@ namespace ShopServerLibrary
         List<Product> GetAllProducts();
 
         [OperationContract]
-        string BuyProduct(User u, Product p, int amount);
+        string BuyProduct(int u, int p, int amount);
 
 
 
@@ -32,5 +32,7 @@ namespace ShopServerLibrary
         [OperationContract]
         List<Product> GetBoughtProducts(/*int id*/);
 
+        [OperationContract]
+        User findUser(int id);
     }
 }

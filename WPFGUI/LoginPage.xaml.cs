@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,13 +26,7 @@ namespace WPFGUI
 
         public LoginPage() {
             InitializeComponent();
-            Application.Current.Properties["user"] = new User
-            {
-                Username = "owen",
-                Password = "newo",
-                Balance = 50,
-                Id = 1
-            };
+
         }
 
         private void Login_Click(object sender, RoutedEventArgs e) {
@@ -44,7 +39,16 @@ namespace WPFGUI
             //    MessageBoxResult result = MessageBox.Show("Username of password is wrong!" +
             //        "pl try again.");
             //}
-            this.NavigationService.Navigate(new ProductsPage());
+
+            int id = ssc.Login(UserText.Text.ToString(), PasswordText.Text.ToString());
+            if (id > 0) {
+
+                Application.Current.Properties["user"] = ssc.findUser(id);
+                this.NavigationService.Navigate(new ProductsPage());
+            }
+            else {
+                MessageBox.Show("Username and password combination is wrong", "Alert");
+            }
         }
     }
 }

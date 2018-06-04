@@ -9,6 +9,7 @@
       Title="ProductsPage">
 
     <Grid Background="#FF93D4C0">
+        <Label Name="idlabel"></Label>
         <Label Content="Your inventory" HorizontalAlignment="Left" Margin="151,117,0,0" VerticalAlignment="Top"/>
         <Label Content="Our products" HorizontalAlignment="Left" Margin="428,117,0,0" VerticalAlignment="Top"/>
         <ListBox Name="boughtBox" HorizontalAlignment="Left" 

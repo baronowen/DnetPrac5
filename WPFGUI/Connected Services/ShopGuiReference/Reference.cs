@@ -34,9 +34,6 @@ namespace WPFGUI.ShopGuiReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double PriceField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WPFGUI.ShopGuiReference.Product[] ProductsField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -95,19 +92,6 @@ namespace WPFGUI.ShopGuiReference {
                 if ((this.PriceField.Equals(value) != true)) {
                     this.PriceField = value;
                     this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public WPFGUI.ShopGuiReference.Product[] Products {
-            get {
-                return this.ProductsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
-                    this.ProductsField = value;
-                    this.RaisePropertyChanged("Products");
                 }
             }
         }
@@ -235,12 +219,6 @@ namespace WPFGUI.ShopGuiReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ShopGuiReference.IShopService")]
     public interface IShopService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/PostNote", ReplyAction="http://tempuri.org/IShopService/PostNoteResponse")]
-        void PostNote(string from, string note);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/PostNote", ReplyAction="http://tempuri.org/IShopService/PostNoteResponse")]
-        System.Threading.Tasks.Task PostNoteAsync(string from, string note);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetAllProducts", ReplyAction="http://tempuri.org/IShopService/GetAllProductsResponse")]
         WPFGUI.ShopGuiReference.Product[] GetAllProducts();
         
@@ -254,10 +232,10 @@ namespace WPFGUI.ShopGuiReference {
         System.Threading.Tasks.Task<string> BuyProductAsync(WPFGUI.ShopGuiReference.User u, WPFGUI.ShopGuiReference.Product p, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
-        bool Login(string username, string password);
+        int Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Login", ReplyAction="http://tempuri.org/IShopService/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
+        System.Threading.Tasks.Task<int> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Register", ReplyAction="http://tempuri.org/IShopService/RegisterResponse")]
         string Register(string username);
@@ -270,6 +248,12 @@ namespace WPFGUI.ShopGuiReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
         System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/findUser", ReplyAction="http://tempuri.org/IShopService/findUserResponse")]
+        WPFGUI.ShopGuiReference.User findUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/findUser", ReplyAction="http://tempuri.org/IShopService/findUserResponse")]
+        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> findUserAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -299,14 +283,6 @@ namespace WPFGUI.ShopGuiReference {
                 base(binding, remoteAddress) {
         }
         
-        public void PostNote(string from, string note) {
-            base.Channel.PostNote(from, note);
-        }
-        
-        public System.Threading.Tasks.Task PostNoteAsync(string from, string note) {
-            return base.Channel.PostNoteAsync(from, note);
-        }
-        
         public WPFGUI.ShopGuiReference.Product[] GetAllProducts() {
             return base.Channel.GetAllProducts();
         }
@@ -323,11 +299,11 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.BuyProductAsync(u, p, amount);
         }
         
-        public bool Login(string username, string password) {
+        public int Login(string username, string password) {
             return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
+        public System.Threading.Tasks.Task<int> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
         }
         
@@ -345,6 +321,14 @@ namespace WPFGUI.ShopGuiReference {
         
         public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync() {
             return base.Channel.GetBoughtProductsAsync();
+        }
+        
+        public WPFGUI.ShopGuiReference.User findUser(int id) {
+            return base.Channel.findUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> findUserAsync(int id) {
+            return base.Channel.findUserAsync(id);
         }
     }
 }

@@ -61,38 +61,23 @@ namespace ShopServerLibrary
             return csv.readProducts();
         }
 
-        public string BuyProduct(User user, Product product, int amount) {
-            if (product.Amount == 0) {
-                return "Product " + product.Name + " is no longer available";
-            }
-            else if (amount <= product.Amount) {
-                if (user.Balance >= (product.Price * amount)) {
+        public string BuyProduct(int user, int product, int amount) {
+            CSV csv = new CSV();
+            List<Product> inventory = csv.readInventory(user);
 
-                    user.Balance = user.Balance - (product.Price * amount);
-                    product.Amount = product.Amount - amount;
-
-                    if (u.BoughtProducts.Contains(product)) {
-                        int index = u.BoughtProducts.FindIndex(a => a.Id == product.Id);
-                        u.BoughtProducts[index].Amount++;
-                    }
-                    else {
-                        u.BoughtProducts.Add(new Product {
-                            Name = product.Name,
-                            Price = product.Price,
-                            Amount = amount,
-                            Id = product.Id
-                        });
-                    }
-                    return "You have bought " + product.Name + " for €" + (product.Price * amount) + ".\n" +
-                        "Your new balance is €" + user.Balance;
-                }
-                else {
-                    return "Your balance is insufficient";
-                }
+            bool itemexists = (from item in inventory
+                               where item.Id == product
+                               select item).Any();
+            if (itemexists) {
+                int indexProduct = inventory.FindIndex(x => x.Id == product);
+                inventory[indexProduct].Amount += amount;
+                csv.saveInventoryFromScratch(inventory, user);
             }
             else {
-                return product.Name + " is sold out.";
+                csv.saveInventory(product, user, amount);
             }
+            Product productresult = findProduct(product);
+
         }
 
         // Methods related to users.        
@@ -175,6 +160,21 @@ namespace ShopServerLibrary
             //NOTE dont forget to update service reference.
             return u.FillBoughtProducts();
         }
-
+        public User findUser(int id) {
+            CSV csv = new CSV();
+            List<User> users = csv.readUsers();
+            User user = (from i in users
+                         where i.Id == id
+                         select i).First();
+            return user;
+        }
+        public Product findProduct(int id) {
+            CSV csv = new CSV();
+            List<Product> products = csv.readProducts();
+            Product product = (from i in products
+                               where i.Id == id
+                               select i).First();
+            return product;
+        }
     }
 }

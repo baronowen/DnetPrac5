@@ -133,6 +133,9 @@
     <None Include="Connected Services\ShopGuiReference\WPFGUI.ShopGuiReference.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ShopGuiReference\WPFGUI.ShopGuiReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

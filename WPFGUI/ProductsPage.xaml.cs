@@ -22,8 +22,7 @@ namespace WPFGUI
     public partial class ProductsPage : Page
     {
         ShopServiceClient ssc = new ShopServiceClient();
-        public ProductsPage()
-        {
+        public ProductsPage() {
             InitializeComponent();
 
             User x = (User)Application.Current.Properties["user"];
@@ -34,18 +33,25 @@ namespace WPFGUI
             //TODO add balance
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ssc.GetAllProducts();
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            refresh();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
             //TODO paramaters for user and product need to be filled in
             Product p = (Product)productBox.SelectedItem;
             User u = (User)Application.Current.Properties["user"];
+            ssc.BuyProduct
+            MessageBoxResult result = MessageBox.Show(p.Id.ToString());
+        }
 
-            MessageBoxResult result = MessageBox.Show(ssc.BuyProduct(u, p, 1));
+        private void refresh() {
+            productBox.ItemsSource = ssc.GetAllProducts();
+            boughtBox.ItemsSource = ssc.GetBoughtProducts();
+            User x = (User)Application.Current.Properties["user"];
+            x = ssc.findUser(x.Id);
+            Application.Current.Properties["user"] = x;
+            moneyLeft.Content = "Money left: €" + x.Balance;
         }
     }
 }
