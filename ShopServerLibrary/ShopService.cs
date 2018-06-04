@@ -99,23 +99,35 @@ namespace ShopServerLibrary
         public string Register(string username) {
             //TODO check if username is already in use
             CSV csv = new CSV();
-            char[] passwordArray = username.ToArray();
-            Array.Reverse(passwordArray);
-            string s = new string(passwordArray);
-            User newUser = new User {
-                Username = username,
-                Password = s,
-                Balance = 50.0
-            };
-            csv.saveUser(newUser);
-            return "your password is : " + s;
+            List<User> users = csv.readUsers();
+
+            bool userExists = (from user in users
+                               where user.Username == username
+                               select user).Any();
+
+            if (!userExists) {
+                char[] passwordArray = username.ToArray();
+                Array.Reverse(passwordArray);
+                string s = new string(passwordArray);
+                User newUser = new User {
+                    Username = username,
+                    Password = s,
+                    Balance = 50.0
+                };
+                csv.saveUser(newUser);
+                return "your password is : " + s;
+
+            }
+            else {
+                return "username has already been taken.";
+            }
         }
 
         public int Login(string username, string password) {
 
             int login = 0;
             CSV csv = new CSV();
-
+            List<User> users = csv.readUsers();
             /*      using (mymodelContainer ctx = new mymodelContainer())
                   {
                       var user = from u in ctx.UserSet
@@ -139,6 +151,14 @@ namespace ShopServerLibrary
 
               */
 
+            bool exists = (from user in users
+                           where user.Username == username && user.Password == password
+                           select user).Any();
+            if (exists) {
+                login = (from user in users
+                         where user.Username == username && user.Password == password
+                         select user.Id).First();
+            }
 
             return login;
 
