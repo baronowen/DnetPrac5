@@ -15,10 +15,14 @@ namespace ShopServerLibrary
     public class ShopService : IShopService
     {
         Product p = new Product();
+<<<<<<< HEAD
         User user = new User();
         CSV csv = new CSV();
 
         public List<User> Users { get; set; }
+=======
+        User u = new User();
+>>>>>>> b3ff1eb5ef20668393b630704830d60efcb1eb35
 
 
         public void initialize() {
@@ -50,13 +54,40 @@ namespace ShopServerLibrary
             return p.GenerateProducts();
         }
 
+        public string BuyProduct(User user, Product product, int amount) {
+            if (product.Amount == 0) {
+                return "Product " + product.Name + " is no longer available";
             }
+            else if (amount <= product.Amount) {
+                if (user.Balance >= (product.Price * amount)) {
+
+                    user.Balance = user.Balance - (product.Price * amount);
+                    product.Amount = product.Amount - amount;
+
+                    if (u.BoughtProducts.Contains(product))
+                    {
+                        int index = u.BoughtProducts.FindIndex(a => a.Id == product.Id);
+                        u.BoughtProducts[index].Amount++;
+                    }
+                    else
+                    {
+                        u.BoughtProducts.Add(new Product
+                        {
+                            Name = product.Name,
+                            Price = product.Price,
+                            Amount = amount,
+                            Id = product.Id
+                        });
+                    }
+                    return "You have bought " + product.Name + " for €" + (product.Price * amount) + ".\n" +
+                        "Your new balance is €" + user.Balance;
                 }
                 else {
                     return "Your balance is insufficient";
                 }
             }
             else {
+                return product.Name + " is sold out.";
             }
         }
 
@@ -66,6 +97,9 @@ namespace ShopServerLibrary
 
             char[] passwordArray = username.ToArray();
             Array.Reverse(passwordArray);
+            string s = new string(passwordArray);
+
+            return s;
         }
 
         public int Login(string username, string password) {
@@ -106,6 +140,7 @@ namespace ShopServerLibrary
         public List<Product> GetBoughtProducts(/*int id*/) {
             //TODO paramater is needed when database is in use.
             //NOTE dont forget to update service reference.
+            return u.FillBoughtProducts();
         }
 
     }
