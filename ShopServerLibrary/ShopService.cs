@@ -20,7 +20,7 @@ namespace ShopServerLibrary
         CSV csv = new CSV();
 
         public List<User> Users { get; set; }
-
+        public List<Product> Products { get; set; }
 
 
 
@@ -30,6 +30,10 @@ namespace ShopServerLibrary
             Users = gen.GenerateUsers();
             foreach (User user in Users) {
                 csv.saveUser(user);
+            }
+            Products = gen.GenerateProducts();
+            foreach (Product p in Products) {
+                csv.saveProduct(p);
             }
         }
         // Methods related to products.
@@ -91,12 +95,17 @@ namespace ShopServerLibrary
         // Methods related to users.        
         public string Register(string username) {
             //TODO check if username is already in use
-
+            CSV csv = new CSV();
             char[] passwordArray = username.ToArray();
             Array.Reverse(passwordArray);
             string s = new string(passwordArray);
-
-            return s;
+            User newUser = new User {
+                Username = username,
+                Password = s,
+                Balance = 50.0
+            };
+            csv.saveUser(newUser);
+            return "your password is : " + s;
         }
 
         public int Login(string username, string password) {
