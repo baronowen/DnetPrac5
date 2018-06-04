@@ -17,12 +17,10 @@ namespace ShopServerLibrary
         public List<Product> BoughtProducts { get; set; }
 
 
-        public List<Product> FillBoughtProducts()
-        {
+        public List<Product> FillBoughtProducts() {
             BoughtProducts = new List<Product>();
             this.BoughtProducts.Add(
-                new Product
-                {
+                new Product {
                     Name = "Carrot",
                     Amount = 1,
                     Price = 2.50,
@@ -32,20 +30,7 @@ namespace ShopServerLibrary
             return BoughtProducts;
         }
 
-        public List<User> GenerateUsers()
-        {
-            List<User> users = new List<User>();
-            users.Add(new User
-            {
-                Id = 1,
-                Username = "owen",
-                Password = "newo",
-                Balance = 50,
-                BoughtProducts = new List<Product>()
-            });
 
-            return users;
-        }
     }
 }
 

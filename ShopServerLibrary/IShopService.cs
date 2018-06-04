@@ -11,8 +11,6 @@ namespace ShopServerLibrary
     [ServiceContract]
     public interface IShopService
     {
-        [OperationContract]
-        void PostNote(string from, string note);
 
         // Methods related to products.
         [OperationContract]
@@ -25,7 +23,7 @@ namespace ShopServerLibrary
 
         // Methods related to users.        
         [OperationContract]
-        bool Login(string username, string password);
+        int Login(string username, string password);
 
         [OperationContract]
         string Register(string username);
