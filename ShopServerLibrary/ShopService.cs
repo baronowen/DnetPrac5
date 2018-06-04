@@ -143,6 +143,8 @@ namespace ShopServerLibrary
             //    : "Username and password combination is wrong!";
         }
 
+        //TODO extra function that gets the user id based on username and password
+
         public List<Product> GetBoughtProducts(/*int id*/) {
             //TODO paramater is needed when database is in use.
             //NOTE dont forget to update service reference.

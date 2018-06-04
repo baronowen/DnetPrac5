@@ -25,6 +25,13 @@ namespace WPFGUI
 
         public LoginPage() {
             InitializeComponent();
+            Application.Current.Properties["user"] = new User
+            {
+                Username = "owen",
+                Password = "newo",
+                Balance = 50,
+                Id = 1
+            };
         }
 
         private void Login_Click(object sender, RoutedEventArgs e) {
