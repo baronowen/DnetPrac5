@@ -25,6 +25,6 @@ namespace ShopServerLibrary
         List<Product> GetBoughtProducts(int id);
 
         [OperationContract]
-        User findUser(int id);
+        User FindUser(int id);
     }
 }

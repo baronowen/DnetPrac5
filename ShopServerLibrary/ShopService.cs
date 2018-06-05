@@ -76,8 +76,8 @@ namespace ShopServerLibrary
             //read multiple csv files
             CSV csv = new CSV();
             List<Product> inventory = csv.ReadInventory(user);
-            User foundUser = findUser(user);
-            Product foundProduct = findProduct(product);
+            User foundUser = FindUser(user);
+            Product foundProduct = FindProduct(product);
             List<User> allUsers = csv.ReadUsers();
             List<Product> allProducts = csv.ReadProducts();
 
@@ -210,7 +210,7 @@ namespace ShopServerLibrary
         }
 
         //find user by id
-        public User findUser(int id) {
+        public User FindUser(int id) {
 
             CSV csv = new CSV();
             List<User> users = csv.ReadUsers();
@@ -222,7 +222,7 @@ namespace ShopServerLibrary
         }
 
         //find product by id
-        public Product findProduct(int id) {
+        public Product FindProduct(int id) {
             CSV csv = new CSV();
 
             List<Product> products = csv.ReadProducts();
