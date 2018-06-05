@@ -68,18 +68,18 @@ namespace ShopServerLibrary
             //return pList;
 
             CSV csv = new CSV();
-            return csv.readProducts();
+            return csv.ReadProducts();
         }
 
 
         public string BuyProduct(int user, int product, int amount) {
             //read multiple csv files
             CSV csv = new CSV();
-            List<Product> inventory = csv.readInventory(user);
+            List<Product> inventory = csv.ReadInventory(user);
             User foundUser = findUser(user);
             Product foundProduct = findProduct(product);
-            List<User> allUsers = csv.readUsers();
-            List<Product> allProducts = csv.readProducts();
+            List<User> allUsers = csv.ReadUsers();
+            List<Product> allProducts = csv.ReadProducts();
 
             // calculate total price
             double totalPrice = foundProduct.Price * amount;
@@ -97,12 +97,12 @@ namespace ShopServerLibrary
                         //update the inventory to update amount of bought product
                         int indexProduct = inventory.FindIndex(x => x.Id == product);
                         inventory[indexProduct].Amount += amount;
-                        csv.saveInventoryFromScratch(inventory, user);
+                        csv.SaveInventoryFromScratch(inventory, user);
                     }
                     else {
 
                         //add new product to inventory
-                        csv.saveInventory(product, user, amount);
+                        csv.SaveInventory(product, user, amount);
                     }
                     //update user balance
                     int indexUser = allUsers.FindIndex(x => x.Id == user);
@@ -111,7 +111,7 @@ namespace ShopServerLibrary
                     //update shop stock amount of bought product
                     int indexShop = allProducts.FindIndex(x => x.Id == product);
                     allProducts[indexShop].Amount -= amount;
-                    csv.updateProduct(allProducts);
+                    csv.UpdateProduct(allProducts);
 
                     return "Item has been bought";
                 }
@@ -128,7 +128,7 @@ namespace ShopServerLibrary
         public string Register(string username) {
             //read csv fo;e
             CSV csv = new CSV();
-            List<User> users = csv.readUsers();
+            List<User> users = csv.ReadUsers();
 
             //check if username exists
 
@@ -147,7 +147,7 @@ namespace ShopServerLibrary
                     Password = s,
                     Balance = 50.0
                 };
-                csv.saveUser(newUser);
+                csv.SaveUser(newUser);
                 return "your password is : " + s;
             }
             else {
@@ -160,7 +160,7 @@ namespace ShopServerLibrary
             int login = 0;
             //read csv
             CSV csv = new CSV();
-            List<User> users = csv.readUsers();
+            List<User> users = csv.ReadUsers();
 
             //old method in case database works
             /*      using (mymodelContainer ctx = new mymodelContainer())
@@ -206,14 +206,14 @@ namespace ShopServerLibrary
 
         public List<Product> GetBoughtProducts(int id) {
             // get inventory of user
-            return csv.readInventory(id);
+            return csv.ReadInventory(id);
         }
 
         //find user by id
         public User findUser(int id) {
 
             CSV csv = new CSV();
-            List<User> users = csv.readUsers();
+            List<User> users = csv.ReadUsers();
             //find user in list
             User user = (from i in users
                          where i.Id == id
@@ -225,7 +225,7 @@ namespace ShopServerLibrary
         public Product findProduct(int id) {
             CSV csv = new CSV();
 
-            List<Product> products = csv.readProducts();
+            List<Product> products = csv.ReadProducts();
             //find product in list
             Product product = (from i in products
                                where i.Id == id

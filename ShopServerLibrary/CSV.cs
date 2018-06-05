@@ -37,7 +37,7 @@ namespace ShopServerLibrary
 
         // save Product, used when no attribute has to be changed
 
-        public void saveProduct(Product product) {
+        public void SaveProduct(Product product) {
             //method same idea as: saveUser and saveInventory
 
             // get path and read lines of csv file into string array
@@ -55,7 +55,7 @@ namespace ShopServerLibrary
         }
 
         //save all products, used when attribute needs to be changed
-        public void updateProduct(List<Product> products) {
+        public void UpdateProduct(List<Product> products) {
             //method same idea as: updateUser and saveInventoryFromScratch
             //get path and define lines to input
             var path = "\\products.csv";
@@ -76,7 +76,7 @@ namespace ShopServerLibrary
         }
 
         // save User, used when no attribute has to be changed 
-        public void saveUser(User user) {
+        public void SaveUser(User user) {
 
             var path = "\\users.csv";
             String[] csv = File.ReadAllLines(path);
@@ -103,7 +103,7 @@ namespace ShopServerLibrary
             File.WriteAllLines(path, lines);
         }
         // save Inventory line, used when no attribute has to be changed
-        public void saveInventory(int product, int user, int amount) {
+        public void SaveInventory(int product, int user, int amount) {
             var path = "\\inventory.csv";
             String[] csv = File.ReadAllLines(path);
             int id = csv.Length + 1;
@@ -115,7 +115,7 @@ namespace ShopServerLibrary
         }
 
         //save all inventory lines, used when attribute needs to be changed
-        public void saveInventoryFromScratch(List<Product> products, int user) {
+        public void SaveInventoryFromScratch(List<Product> products, int user) {
             var path = "\\inventory.csv";
             List<String> lines = new List<string>();
             int id = 1;
@@ -130,7 +130,7 @@ namespace ShopServerLibrary
         }
 
         // read all users
-        public List<User> readUsers() {
+        public List<User> ReadUsers() {
 
             //method same idea as: readProducts,readInventory
             //define path and read lines
@@ -153,7 +153,7 @@ namespace ShopServerLibrary
             return users;
         }
         // read all products
-        public List<Product> readProducts() {
+        public List<Product> ReadProducts() {
             var path = "\\products.csv";
             String[] csv = File.ReadAllLines(path);
             List<Product> products = new List<Product>();
@@ -173,9 +173,9 @@ namespace ShopServerLibrary
 
         // read all inventory lines from an user
 
-        public List<Product> readInventory(int user) {
+        public List<Product> ReadInventory(int user) {
             var path = "\\inventory.csv";
-            List<Product> products = readProducts();
+            List<Product> products = ReadProducts();
 
             String[] csv = File.ReadAllLines(path);
             List<Product> results = new List<Product>();
