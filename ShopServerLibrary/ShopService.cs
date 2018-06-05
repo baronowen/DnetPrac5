@@ -107,7 +107,7 @@ namespace ShopServerLibrary
                     //update user balance
                     int indexUser = allUsers.FindIndex(x => x.Id == user);
                     allUsers[indexUser].Balance -= totalPrice;
-                    csv.updateUser(allUsers);
+                    csv.UpdateUser(allUsers);
                     //update shop stock amount of bought product
                     int indexShop = allProducts.FindIndex(x => x.Id == product);
                     allProducts[indexShop].Amount -= amount;

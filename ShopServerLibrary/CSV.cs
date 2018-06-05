@@ -89,7 +89,7 @@ namespace ShopServerLibrary
             File.WriteAllLines(path, csv);
         }
         //save all users, used when attribute needs to be changed
-        public void updateUser(List<User> users) {
+        public void UpdateUser(List<User> users) {
             var path = "\\users.csv";
             List<String> lines = new List<string>();
             int id = 1;
