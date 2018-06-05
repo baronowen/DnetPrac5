@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using ShopServerLibrary;
 namespace ShopServerLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
@@ -100,9 +100,12 @@ namespace ShopServerLibrary
                         csv.saveInventoryFromScratch(inventory, user);
                     }
                     else {
-
+                        Product found2 = foundProduct;
+                        found2.Amount = amount;
+                        List<Product> foundprods = csv.readInventory(user);
+                        foundprods.Add(found2);
                         //add new product to inventory
-                        csv.saveInventory(product, user, amount);
+                        csv.saveInventoryFromScratch(foundprods, user);
                     }
                     //update user balance
                     int indexUser = allUsers.FindIndex(x => x.Id == user);
@@ -126,7 +129,7 @@ namespace ShopServerLibrary
 
         // Methods related to users.
         public string Register(string username) {
-            //read csv fo;e
+            
             CSV csv = new CSV();
             List<User> users = csv.readUsers();
 
@@ -147,7 +150,8 @@ namespace ShopServerLibrary
                     Password = s,
                     Balance = 50.0
                 };
-                csv.saveUser(newUser);
+                users.Add(newUser);
+                csv.updateUser(users);
                 return "your password is : " + s;
             }
             else {
@@ -161,30 +165,6 @@ namespace ShopServerLibrary
             //read csv
             CSV csv = new CSV();
             List<User> users = csv.readUsers();
-
-            //old method in case database works
-            /*      using (mymodelContainer ctx = new mymodelContainer())
-                  {
-                      var user = from u in ctx.UserSet
-                                 where u.UserName == username &&
-                                 u.Password == password
-                                 select u;
-
-                      foreach(var u in user)
-                      {
-                          if(u.UserName == username
-                              && u.Password == password)
-                          {
-                              login = true;
-                          }
-                          else
-                          {
-                              login = false;
-                          }
-                      }
-                  }
-
-              */
 
             //check if user exists
             bool exists = (from user in users

@@ -249,11 +249,11 @@ namespace WPFGUI.ShopGuiReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/GetBoughtProducts", ReplyAction="http://tempuri.org/IShopService/GetBoughtProductsResponse")]
         System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.Product[]> GetBoughtProductsAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/findUser", ReplyAction="http://tempuri.org/IShopService/findUserResponse")]
-        WPFGUI.ShopGuiReference.User findUser(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/FindUser", ReplyAction="http://tempuri.org/IShopService/FindUserResponse")]
+        WPFGUI.ShopGuiReference.User FindUser(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/findUser", ReplyAction="http://tempuri.org/IShopService/findUserResponse")]
-        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> findUserAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/FindUser", ReplyAction="http://tempuri.org/IShopService/FindUserResponse")]
+        System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> FindUserAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -323,12 +323,12 @@ namespace WPFGUI.ShopGuiReference {
             return base.Channel.GetBoughtProductsAsync(id);
         }
         
-        public WPFGUI.ShopGuiReference.User findUser(int id) {
-            return base.Channel.findUser(id);
+        public WPFGUI.ShopGuiReference.User FindUser(int id) {
+            return base.Channel.FindUser(id);
         }
         
-        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> findUserAsync(int id) {
-            return base.Channel.findUserAsync(id);
+        public System.Threading.Tasks.Task<WPFGUI.ShopGuiReference.User> FindUserAsync(int id) {
+            return base.Channel.FindUserAsync(id);
         }
     }
 }

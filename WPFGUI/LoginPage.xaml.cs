@@ -28,7 +28,7 @@ namespace WPFGUI
 
             int id = ssc.Login(UserText.Text.ToString(), PasswordText.Text.ToString());
             if (id > 0) {
-                Application.Current.Properties["user"] = ssc.findUser(id);
+                Application.Current.Properties["user"] = ssc.FindUser(id);
                 this.NavigationService.Navigate(new ProductsPage());
             }
             else {

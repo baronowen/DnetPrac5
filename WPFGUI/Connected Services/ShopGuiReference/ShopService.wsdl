@@ -37,11 +37,11 @@
   <wsdl:message name="IShopService_GetBoughtProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBoughtProductsResponse" />
   </wsdl:message>
-  <wsdl:message name="IShopService_findUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:findUser" />
+  <wsdl:message name="IShopService_FindUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUser" />
   </wsdl:message>
-  <wsdl:message name="IShopService_findUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:findUserResponse" />
+  <wsdl:message name="IShopService_FindUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserResponse" />
   </wsdl:message>
   <wsdl:portType name="IShopService">
     <wsdl:operation name="GetAllProducts">
@@ -64,9 +64,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/GetBoughtProducts" message="tns:IShopService_GetBoughtProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShopService/GetBoughtProductsResponse" message="tns:IShopService_GetBoughtProducts_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="findUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/findUser" message="tns:IShopService_findUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/findUserResponse" message="tns:IShopService_findUser_OutputMessage" />
+    <wsdl:operation name="FindUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IShopService/FindUser" message="tns:IShopService_FindUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/FindUserResponse" message="tns:IShopService_FindUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IShopService" type="tns:IShopService">
@@ -116,8 +116,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="findUser">
-      <soap:operation soapAction="http://tempuri.org/IShopService/findUser" style="document" />
+    <wsdl:operation name="FindUser">
+      <soap:operation soapAction="http://tempuri.org/IShopService/FindUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
